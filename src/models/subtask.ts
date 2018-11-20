@@ -1,0 +1,38 @@
+export class SubTask {
+    private _nameTask: string;
+    private _dateFrom: Date;
+    private _dateTo: Date;
+    private _status: number;
+    private _type: number;
+
+    public get nameTask(): string {
+        return this._nameTask;
+    }
+    public set nameTask(value: string) {
+        this._nameTask = value;
+    }
+    public get dateFrom(): Date {
+        return this._dateFrom;
+    }
+    public set dateFrom(value: Date) {
+        this._dateFrom = value;
+    }
+    public get dateTo(): Date {
+        return this._dateTo;
+    }
+    public set dateTo(value: Date) {
+        this._dateTo = value;
+    }
+    public get status(): number {
+        return this._status;
+    }
+    public set status(value: number) {
+        this._status = value;
+    }
+    public get type(): number {
+        return this._type;
+    }
+    public set type(value: number) {
+        this._type = value;
+    }
+}
