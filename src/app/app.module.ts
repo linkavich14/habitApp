@@ -18,6 +18,10 @@ import { SignupPage } from '../pages/signup/signup';
 import { HabitPage } from '../pages/habit/habit';
 import { StatisticsPage } from '../pages/statistics/statistics';
 import { ProfilePage } from '../pages/profile/profile';
+import { SubtaskPage } from '../pages/subtask/subtask';
+import { LanguagePage } from '../pages/language/language';
+import { NotificationPage } from '../pages/notification/notification';
+import { TutorialPage } from '../pages/tutorial/tutorial';
 
 @NgModule({
   declarations: [
@@ -30,7 +34,12 @@ import { ProfilePage } from '../pages/profile/profile';
     SignupPage,
     HabitPage,
     StatisticsPage,
-    ProfilePage
+    ProfilePage,
+    SubtaskPage,
+    LanguagePage,
+    NotificationPage, 
+    TutorialPage,
+    AboutPage
   ],
   imports: [
     BrowserModule,
@@ -47,7 +56,12 @@ import { ProfilePage } from '../pages/profile/profile';
     SignupPage,
     HabitPage,
     StatisticsPage,
-    ProfilePage
+    ProfilePage,
+    SubtaskPage,
+    LanguagePage,
+    NotificationPage,
+    TutorialPage,
+    AboutPage
   ],
   providers: [
     StatusBar,

@@ -1,0 +1,17 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>Notifications</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-item>
+    <ion-label>Allow notifications</ion-label>
+    <ion-toggle disable checked="false"></ion-toggle>
+  </ion-item>
+
+  <ion-list [class.hide]="status">
+    <ion-item></ion-item>
+  </ion-list>
+</ion-content>

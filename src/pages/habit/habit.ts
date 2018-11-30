@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the HabitPage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { IonicPage, NavController, NavParams, Toggle } from 'ionic-angular';
+import { SubtaskPage } from '../subtask/subtask';
 
 @IonicPage()
 @Component({
@@ -14,12 +8,34 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
   templateUrl: 'habit.html',
 })
 export class HabitPage {
+  subTaskPage = SubtaskPage;
+  displayToggleLocationOptions: boolean = true;
+  displayMoreDetailsOptions: boolean = true;
+  displaySubTasksOptions: boolean = true; 
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad HabitPage');
+  public event = {
+    month: '1990-02-19',
+    timeStarts: '07:43',
+    timeEnds: '1990-02-20'
+  }
+
+  loadSubTaskPage(page:any){
+    this.navCtrl.push(page);
+  }
+
+  onToggleLocation(toggle: Toggle) {
+    this.displayToggleLocationOptions = !toggle.checked;
+  }
+
+  onToggleMoreDetails(toggle: Toggle) {
+    this.displayMoreDetailsOptions = !toggle.checked;
+  }
+
+  onToggleShowSubtasks(toggle: Toggle){
+    this.displaySubTasksOptions = !toggle.checked;
   }
 
 }

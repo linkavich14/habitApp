@@ -1,0 +1,94 @@
+
+<ion-header>
+  <ion-navbar>
+    <ion-title>SubTask</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <ion-list>
+    <ion-list-header>New Subtask</ion-list-header>
+    <ion-item>
+        <ion-label floating>Task Name</ion-label>
+        <ion-input type="text" value=""></ion-input>
+    </ion-item>
+    <ion-item>
+        <ion-label>Habit Type</ion-label>
+        <ion-select interface="popover">
+          <ion-option value="habit">Habit</ion-option>
+          <ion-option value="appointment">Appointment</ion-option>
+          <ion-option value="reminder">Reminder</ion-option>
+        </ion-select>
+    </ion-item>
+    <ion-item>
+        <ion-label>Start Date</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Start Time</ion-label>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Ends</ion-label>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
+      </ion-item>
+  
+      <ion-item>
+        <ion-label>Repeat</ion-label>
+        <ion-toggle value="repeat" checked="false"></ion-toggle>
+      </ion-item>
+      <ion-item [class.hide]="displayToggleLocation">
+          <ion-label>Add Location</ion-label>
+          <ion-toggle value="map" checked="false" (ionChange)="onToggleLocation($event)"></ion-toggle>
+      </ion-item>
+      <ion-list no-lines [class.hide]="displayToggleLocationOptions">
+        <ion-list-header>
+          Location details
+        </ion-list-header>
+        <ion-item>
+            Aparece Mapa
+        </ion-item>
+        <button ion-item>
+          <ion-label>Travel Time</ion-label>
+          <ion-note item-end>None</ion-note>
+        </button>
+      </ion-list>
+      <ion-item [class.hide]="displayToggleMoney">
+          <ion-label>Money Involved</ion-label>
+          <ion-toggle value="money" checked="false" (ionChange)="onToggleMoney($event)"></ion-toggle>
+      </ion-item>
+      <ion-list no-lines [class.hide]="displayToggleMoneyOptions">
+          <ion-list-header>
+            My money goals
+          </ion-list-header>
+          <ion-item>
+              <ion-label>Your goal ?</ion-label>
+              <ion-select interface="popover">
+                <ion-option value="save">Save % every week</ion-option>
+                <ion-option value="debt">Reduce my debt</ion-option>
+                <ion-option value="other">Other</ion-option>
+              </ion-select>         
+          </ion-item>
+          <ion-item>
+              <ion-label floating>Percentage</ion-label>
+              <ion-input type="text" value=""></ion-input>
+          </ion-item>
+      </ion-list>
+      <ion-item [class.hide]="displayToggleExercise">
+          <ion-label>Exercise Involved</ion-label>
+          <ion-toggle value="exercise" checked="false"></ion-toggle>
+      </ion-item>
+      <ion-item [class.hide]="displayToggleLearning">
+          <ion-label>Learning Involved</ion-label>
+          <ion-toggle value="learning" checked="false"></ion-toggle>
+      </ion-item>
+      <ion-item [class.hide]="displayToggleBadHabit">
+          <ion-label>Remove a Bad Habit</ion-label>
+          <ion-toggle value="badHabit" checked="false"></ion-toggle>
+      </ion-item>
+    </ion-list>
+
+
+</ion-content>

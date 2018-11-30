@@ -6,20 +6,24 @@
     </ion-header>
     <ion-content>
         <ion-list>
-            <button ion-item>
+            <button ion-item (click)="onLoad(profilePage)">
                 <ion-icon name="person" item-left></ion-icon>
                 Profile
             </button>
-            <button ion-item>
+            <button ion-item (click)="onLoad(notificationPage)">
                 <ion-icon name="notifications" item-left></ion-icon>
                 Notifications
             </button>
-            <button ion-item>
+            <button ion-item (click)="onLoad(languagePage)">
                 <ion-icon name="globe" item-left></ion-icon>
                 Language
             </button>
-            <button ion-item>
-                <ion-icon name="information-circle" item-left></ion-icon>
+            <button ion-item (click)="onLoad(tutorialPage)">
+                <ion-icon name="question" item-left></ion-icon>
+                Tutorial
+            </button>
+            <button ion-item (click)="onLoad(aboutPage)">
+                <ion-icon name="information-circle" item-left ></ion-icon>
                 About
             </button>
         </ion-list>

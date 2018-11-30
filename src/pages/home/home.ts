@@ -1,25 +1,27 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Component, ViewChild } from '@angular/core';
+import { NavController, PopoverController, MenuController } from 'ionic-angular';
+import { TabsPage } from '../tabs/tabs';
+import { HabitPage } from '../habit/habit';
 
 @Component({
   selector: 'page-home',
   templateUrl: 'home.html'
 })
 export class HomePage {
+  habitPage =   HabitPage;
+  rootPage:any = TabsPage;
+  status: boolean = true;
 
-  public status: boolean;
-
-  constructor(public navCtrl: NavController) {
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private menuCtrl: MenuController) {
 
   }
 
-  show() {
-    debugger;
-    this.status = false;
-  }
+  toggleDisplay(status){
+    this.status = !status;
+  }  
 
-  hide() {
-    this.status = true;
+  onLoad(page: any) {
+    this.navCtrl.push(page);
   }
 
 }
