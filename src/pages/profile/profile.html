@@ -7,14 +7,14 @@
 
 
 <ion-content padding>
-    <ion-list>
+    <ion-list no-lines>
         <ion-item>
           <ion-label floating>Full Name</ion-label>
           <ion-input type="text"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>email</ion-label>
-          <ion-input type="password"></ion-input>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="Email"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Birthday</ion-label>
@@ -26,9 +26,13 @@
             <ion-option value="saturn">Sega Saturn</ion-option>
             <ion-option value="snes">SNES</ion-option>
           </ion-select>
+        </ion-item>
+        <ion-item>
+            <ion-label floating>Password</ion-label>
+            <ion-input type="Password" value=""></ion-input>
         </ion-item>     
       </ion-list>
       <div padding>
-        <button block>Save</button>
+        <button ion-button block>Save</button>
       </div>
 </ion-content>

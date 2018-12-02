@@ -1,5 +1,5 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavController, PopoverController, MenuController } from 'ionic-angular';
+import { Component } from '@angular/core';
+import { NavController, PopoverController } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { HabitPage } from '../habit/habit';
 
@@ -12,7 +12,7 @@ export class HomePage {
   rootPage:any = TabsPage;
   status: boolean = true;
 
-  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController, private menuCtrl: MenuController) {
+  constructor(public navCtrl: NavController, public popoverCtrl: PopoverController) {
 
   }
 
