@@ -23,6 +23,9 @@ import { LanguagePage } from '../pages/language/language';
 import { NotificationPage } from '../pages/notification/notification';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 
+import { NgCalendarModule  } from 'ionic2-calendar';
+import { CustomizePage } from '../pages/customize/customize';
+
 @NgModule({
   declarations: [
     MyApp,
@@ -39,9 +42,11 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     LanguagePage,
     NotificationPage, 
     TutorialPage,
-    AboutPage
+    AboutPage,
+    CustomizePage
   ],
   imports: [
+    NgCalendarModule,
     BrowserModule,
     IonicModule.forRoot(MyApp)
   ],
@@ -61,7 +66,8 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
     LanguagePage,
     NotificationPage,
     TutorialPage,
-    AboutPage
+    AboutPage,
+    CustomizePage
   ],
   providers: [
     StatusBar,

@@ -9,6 +9,8 @@ import { NotificationPage } from '../pages/notification/notification';
 import { LanguagePage } from '../pages/language/language';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { AboutPage } from '../pages/about/about';
+import { CustomizePage } from '../pages/customize/customize';
+import { SigninPage } from '../pages/signin/signin';
 
 @Component({
   templateUrl: 'app.html'
@@ -19,6 +21,8 @@ export class MyApp {
   languagePage = LanguagePage;
   tutorialPage = TutorialPage;
   aboutPage = AboutPage;
+  customizePage = CustomizePage;
+  logInPage = SigninPage;
   
   @ViewChild('nav') nav: NavController;
   rootPage:any = TabsPage;

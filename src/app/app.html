@@ -6,6 +6,11 @@
     </ion-header>
     <ion-content>
         <ion-list>
+                <button ion-item (click)="onLoad(logInPage)">
+                    <ion-icon name="" item-left></ion-icon>
+                    Sign Up/Log In
+                </button>
+
             <button ion-item (click)="onLoad(profilePage)">
                 <ion-icon name="person" item-left></ion-icon>
                 Profile
@@ -22,10 +27,15 @@
                 <ion-icon name="question" item-left></ion-icon>
                 Tutorial
             </button>
+            <button ion-item (click)="onLoad(customizePage)">
+                <ion-icon name="" item-left></ion-icon>
+                Customize
+            </button>
             <button ion-item (click)="onLoad(aboutPage)">
                 <ion-icon name="information-circle" item-left ></ion-icon>
                 About
             </button>
+
         </ion-list>
     </ion-content>
 </ion-menu>

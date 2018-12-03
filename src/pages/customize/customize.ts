@@ -1,19 +1,18 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
-
 @IonicPage()
 @Component({
-  selector: 'page-calendar',
-  templateUrl: 'calendar.html',
+  selector: 'page-customize',
+  templateUrl: 'customize.html',
 })
-export class CalendarPage {
+export class CustomizePage {
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad CalendarPage');
+    console.log('ionViewDidLoad CustomizePage');
   }
 
 }

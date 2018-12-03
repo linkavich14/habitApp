@@ -12,6 +12,7 @@ export class HabitPage {
   displayToggleLocationOptions: boolean = true;
   displayMoreDetailsOptions: boolean = true;
   displaySubTasksOptions: boolean = true; 
+  displayDates: boolean = false;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
@@ -36,6 +37,10 @@ export class HabitPage {
 
   onToggleShowSubtasks(toggle: Toggle){
     this.displaySubTasksOptions = !toggle.checked;
+  }
+
+  onToggleDates(toggle: Toggle) {
+    this.displayDates = toggle.checked;
   }
 
 }

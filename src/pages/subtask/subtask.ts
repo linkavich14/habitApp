@@ -13,10 +13,14 @@ export class SubtaskPage {
   displayToggleLocation: boolean = false;
   displayToggleMoney: boolean = false;
   displayToggleBadHabit: boolean = false;
+  displayDates: boolean = false;
 
   //Toggles display options
   displayToggleMoneyOptions: boolean = true;
   displayToggleLocationOptions: boolean = true;
+  displayToggleExerciseOption: boolean = true;
+  displayToggleLearningOptions: boolean = true;
+  displayToggleBadHabitOptions: boolean = true;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
@@ -40,5 +44,20 @@ export class SubtaskPage {
     this.displayToggleLocationOptions = !toggle.checked;
   }
 
+  onToggleLearning(toggle: Toggle) {
+    this.displayToggleLearning = !toggle.checked;
+  }
+
+  onToggleExercise(toggle: Toggle) {
+    this.displayToggleExercise = !toggle.checked;
+  }
+
+  onToggleBadHabit(toggle: Toggle) {
+    this.displayToggleBadHabit = !toggle.checked;
+  }
+
+  onToggleDates(toggle: Toggle) {
+    this.displayDates = toggle.checked;
+  }
 
 }

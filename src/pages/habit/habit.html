@@ -41,20 +41,20 @@
           More details
         </ion-list-header>
         <ion-item>
+          <ion-label>Repeat</ion-label>
+          <ion-toggle value="repeat" checked="false" (ionChange)="onToggleDates($event)"></ion-toggle>
+        </ion-item>
+        <ion-item [class.hide]="displayDates">
           <ion-label>Start Date</ion-label>
           <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+        </ion-item>
+        <ion-item [class.hide]="displayDates">
+          <ion-label>End Date</ion-label>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>Start Time</ion-label>
           <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
-        </ion-item>
-        <ion-item>
-          <ion-label>Ends</ion-label>
-          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
-        </ion-item>
-        <ion-item>
-          <ion-label>Repeat</ion-label>
-          <ion-toggle value="repeat" checked="false"></ion-toggle>
         </ion-item>
         <ion-item>
             <ion-label>Add Location</ion-label>
