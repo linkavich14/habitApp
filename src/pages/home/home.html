@@ -19,9 +19,14 @@
         <h2>Mi habito</h2>
         <p>Descripcion del habito en mas detalle</p>
       </div>
-      <button ion-button outline (click)="toggleDisplay(status)">
+      <div id="subtasks">
+        <button ion-button outline (click)="toggleDisplay(status)">
           Show subtasks
-      </button>
+        </button>
+      <div id="percentageSubtasks" style="width:20px;">
+        43%
+      </div>
+    </div>
       <ion-list [class.hide]="status" no-lines>
           <ion-item-sliding>
             <ion-item>

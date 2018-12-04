@@ -1,10 +1,30 @@
-
 <ion-header>
-  <ion-navbar>
-    <ion-title>customize</ion-title>
-  </ion-navbar>
-</ion-header>
+    <ion-navbar>
+        <ion-buttons start>
+            <button ion-button menuToggle>
+                <ion-icon name="menu"></ion-icon>
+              </button>
+        </ion-buttons>
+      <ion-title>Customization</ion-title>
+    </ion-navbar>
+  </ion-header>
+
 
 <ion-content padding>
+  <ion-list>
+    <ion-list-header>
+      Customization Options
+    </ion-list-header>
+    <ion-item>
+        <ion-label>App Theme</ion-label>
+        <ion-select interface="popover">
+          <ion-option value="default">Default</ion-option>
+          <ion-option value="black">Dark</ion-option>
+          <ion-option value="blue">Blue</ion-option>
+          <ion-option value="green">Green</ion-option>
+        </ion-select>
+    </ion-item>
+  </ion-list>
 
+  
 </ion-content>

@@ -25,6 +25,7 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { CustomizePage } from '../pages/customize/customize';
+import { ComponentsModule } from '../components/components.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +49,7 @@ import { CustomizePage } from '../pages/customize/customize';
   imports: [
     NgCalendarModule,
     BrowserModule,
+    ComponentsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

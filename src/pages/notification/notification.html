@@ -8,17 +8,17 @@
 <ion-content padding>
   <ion-item>
     <ion-label>Allow notifications</ion-label>
-    <ion-toggle checked="false"></ion-toggle>
+    <ion-toggle checked="true" (ionChange)="onDisableAllNotifications($event)"></ion-toggle>
   </ion-item>
 
-  <ion-list [class.hide]="status">
+  <ion-list [class.hide]="displayNotifications">
     <ion-item>
       <ion-label>Allow sound notifications</ion-label>
-      <ion-toggle checked="true"></ion-toggle>
+      <ion-toggle checked="true" (ionChange)="onDisableSoundNotifications($event)"></ion-toggle>
     </ion-item>
     <ion-item>
       <ion-label>Allow banner notifications</ion-label>
-      <ion-toggle checked="true"></ion-toggle>
+      <ion-toggle checked="true" (ionChange)="onDisableBannerNotifications($event)"></ion-toggle>
     </ion-item>
   </ion-list>
 </ion-content>

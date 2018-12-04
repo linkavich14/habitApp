@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Toggle } from 'ionic-angular';
 
 
 @IonicPage()
@@ -9,11 +9,25 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class NotificationPage {
 
+  displayNotifications: boolean = false;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad NotificationPage');
+  }
+
+  onDisableAllNotifications(toggle: Toggle){
+    this.displayNotifications = toggle.checked;
+  }
+
+  onDisableSoundNotifications(toggle: Toggle){
+
+  }
+
+  onDisableBannerNotifications(toggle: Toggle){
+
   }
 
 }

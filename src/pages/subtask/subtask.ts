@@ -45,15 +45,15 @@ export class SubtaskPage {
   }
 
   onToggleLearning(toggle: Toggle) {
-    this.displayToggleLearning = !toggle.checked;
+    this.displayToggleLearningOptions = !toggle.checked;
   }
 
   onToggleExercise(toggle: Toggle) {
-    this.displayToggleExercise = !toggle.checked;
+    this.displayToggleExerciseOption = !toggle.checked;
   }
 
   onToggleBadHabit(toggle: Toggle) {
-    this.displayToggleBadHabit = !toggle.checked;
+    this.displayToggleBadHabitOptions = !toggle.checked;
   }
 
   onToggleDates(toggle: Toggle) {
