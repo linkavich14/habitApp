@@ -2,7 +2,9 @@ import { Habit } from "../models/habit";
 
 export class HabitsService {
 
-    private habits: Habit[] = [];
+    private habits: Habit[] = [
+        
+    ];
     
     addHabit(habit: Habit) {
         this.habits.push(habit);

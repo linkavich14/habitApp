@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams, Toggle } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetController } from 'ionic-angular';
 import { SubtaskPage } from '../subtask/subtask';
 
 @IonicPage()
@@ -14,13 +14,55 @@ export class HabitPage {
   displaySubTasksOptions: boolean = true; 
   displayDates: boolean = false;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  constructor(
+    public navCtrl: NavController, 
+    public navParams: NavParams,
+    public platform: Platform,
+    public actionsheetCtrl: ActionSheetController) {
   }
 
   public event = {
     month: '1990-02-19',
     timeStarts: '07:43',
     timeEnds: '1990-02-20'
+  }
+
+  openMenuSubTask(){
+    let actionSheet = this.actionsheetCtrl.create({
+      title: 'Subtask options',
+      //cssClass: 'action-sheets-basic-page',
+      buttons: [
+        {
+          text: 'Edit',
+          icon: !this.platform.is('ios') ? 'arrow-dropright-circle' : null,
+          handler: () => this.loadSubTaskPage(this.subTaskPage)
+        },
+        {
+          text: 'Delete',
+          role: 'destructive',
+          icon: !this.platform.is('ios') ? 'trash' : null,
+          handler: () => {
+            console.log('Delete clicked');
+          }
+        },
+        {
+          text: 'Complete',
+          icon: !this.platform.is('ios') ? 'share' : null,
+          handler: () => {
+            console.log('Share clicked');
+          }
+        },
+        {
+          text: 'Cancel',
+          role: 'cancel', // will always sort to be on the bottom
+          icon: !this.platform.is('ios') ? 'close' : null,
+          handler: () => {
+            console.log('Cancel clicked');
+          }
+        }
+      ]
+    });
+    actionSheet.present();
   }
 
   loadSubTaskPage(page:any){
