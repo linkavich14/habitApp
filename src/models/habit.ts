@@ -2,23 +2,33 @@ import { SubTask } from "./subtask";
 
 export class Habit {
 
-    private habitName: string;
+    private _habitName: string;
     private _description: string;
     private _typeHabit: number;
     private _dateFrom: Date;
     private _dateTo: Date;
     private _location: string;
-    private _status: number;
+    private _status: number; // 1 active, 0 completed
     private _subTasks: SubTask[];
     
-    constructor(){}
+    constructor(
+        public habitName: string, 
+        public description: string, 
+        public typeHabit: number,
+        public dateFrom: Date,
+        public dateTo: Date,
+        public location: string,
+        public status: number,
+        public subtasks: SubTask[]){
+        
+    }
 
     public getHabitName(){
-        return this.habitName;
+        return this._habitName;
     }
 
     public setHabitName(habitName: string){
-        this.habitName = habitName;
+        this._habitName = habitName;
     }
 
     public getDescription(): string {

@@ -5,6 +5,13 @@ export class SubTask {
     private _status: number;
     private _type: number;
 
+    constructor(
+        public taskName:string,
+        public fromDate: Date,
+        public toTadet: Date,
+        public statusTask: number,
+        public typeTask: number){}
+
     public get nameTask(): string {
         return this._nameTask;
     }
