@@ -12,13 +12,13 @@
 <ion-content>
   <ion-list>
     <ion-list-header>My Habits</ion-list-header>
-    <ion-item>        
+    <ion-item *ngFor="let habit of habits">        
       <ion-avatar item-start>
         <img src="" alt="">
       </ion-avatar>
       <div (click)=onLoad(habitPage)>
-        <h2>Mi habito</h2>
-        <p>Descripcion del habito en mas detalle</p>
+        <h2>{{ habit.getHabitName() }}</h2>
+        <p>{{ habit.getDescription() }}</p>
       </div>
       <div id="subtasks">
         <button ion-button outline (click)="toggleDisplay(status)">
@@ -32,8 +32,8 @@
         <ion-list-header>
           My Subtasks
         </ion-list-header>  
-        <ion-item (click)="openMenu()">
-            My Subtask
+        <ion-item (click)="openMenu()" *ngFor="let subTask of habit.getSubTasks()">
+            {{ subTask.getNameTask() }}
           </ion-item>
         </ion-list>
     </ion-item>

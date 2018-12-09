@@ -1,4 +1,4 @@
-import { Habit } from "./habit";
+import { Habit } from "./habit-bean";
 
 export class User {
     private _name: string;

@@ -10,9 +10,11 @@ export class SubTask {
         public fromDate: Date,
         public toTadet: Date,
         public statusTask: number,
-        public typeTask: number){}
+        public typeTask: number){
+            this._nameTask = taskName;
+        }
 
-    public get nameTask(): string {
+    public getNameTask(): string {
         return this._nameTask;
     }
     public set nameTask(value: string) {

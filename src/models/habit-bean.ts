@@ -2,7 +2,8 @@ import { SubTask } from "./subtask";
 
 export class Habit {
 
-    private _habitName: string;
+    public _habitUID: number;
+    public _habitName: string;
     private _description: string;
     private _typeHabit: number;
     private _dateFrom: Date;
@@ -12,6 +13,7 @@ export class Habit {
     private _subTasks: SubTask[];
     
     constructor(
+        public habitUID: number,
         public habitName: string, 
         public description: string, 
         public typeHabit: number,
@@ -20,7 +22,19 @@ export class Habit {
         public location: string,
         public status: number,
         public subtasks: SubTask[]){
-        
+            this._habitUID = habitUID;
+            this._habitName = habitName;
+            this._description = description;
+            this._typeHabit = typeHabit;
+            this._dateFrom = dateFrom;
+            this._dateTo = dateTo;
+            this._location = location;
+            this._status = status;
+            this._subTasks = subtasks;
+    }
+
+    public getHabitUID() {
+        return this._habitUID;
     }
 
     public getHabitName(){
@@ -73,10 +87,10 @@ export class Habit {
         this._status = value;
     }
 
-    public get subTasks(): SubTask[] {
+    public getSubTasks(): SubTask[] {
         return this._subTasks;
     }
-    public set subTasks(value: SubTask[]) {
+    public setSubTasks(value: SubTask[]) {
         this._subTasks = value;
     }
 

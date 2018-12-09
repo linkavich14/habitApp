@@ -1,8 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetController } from 'ionic-angular';
 import { SubtaskPage } from '../subtask/subtask';
-import { Habit } from '../../models/habit';
-import { HabitsService } from '../../services/habits-service';
 
 @IonicPage()
 @Component({
@@ -16,20 +14,15 @@ export class HabitPage {
   displaySubTasksOptions: boolean = true; 
   displayDates: boolean = false;
 
-  habits: Habit[];
-
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public platform: Platform,
-    private habitService: HabitsService,
     public actionsheetCtrl: ActionSheetController) {
   }
 
-  ionViewWillEnter(){
-    this.habits = this.habitService.getHabits();
-  }
-
+  
+ //new Date().getDate.toString
   public event = {
     month: '1990-02-19',
     timeStarts: '07:43',

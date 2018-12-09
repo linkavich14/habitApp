@@ -3,6 +3,9 @@ import { NavController, ActionSheetController, Platform } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { HabitPage } from '../habit/habit';
 import { SubtaskPage } from '../subtask/subtask';
+import { Habit } from '../../models/habit-bean';
+import { HabitsService } from '../../services/habits-service';
+import { SubTask } from '../../models/subtask';
 
 @Component({
   selector: 'page-home',
@@ -14,12 +17,21 @@ export class HomePage {
   rootPage:any = TabsPage;
   status: boolean = true;
   subTaskBtnText: string = "Show subtasks";
+  habits: Habit[];
+  subtasks : SubTask [];
 
   constructor(
       public navCtrl: NavController, 
       public platform: Platform,
+      private habitService: HabitsService,
       public actionsheetCtrl: ActionSheetController) {
 
+  }
+
+  ionViewWillEnter(){
+    //console.log(new Date().toDateString());
+    this.habits = this.habitService.getHabits();
+    //this.subtasks = this.habitService.
   }
 
   toggleDisplay(status){
