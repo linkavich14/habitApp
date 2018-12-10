@@ -16,7 +16,7 @@
       <ion-avatar item-start>
         <img src="" alt="">
       </ion-avatar>
-      <div (click)=onLoad(habitPage)>
+      <div (click)="onLoad(habitPage, habit)">
         <h2>{{ habit.getHabitName() }}</h2>
         <p>{{ habit.getDescription() }}</p>
       </div>
@@ -32,7 +32,7 @@
         <ion-list-header>
           My Subtasks
         </ion-list-header>  
-        <ion-item (click)="openMenu()" *ngFor="let subTask of habit.getSubTasks()">
+        <ion-item (click)="openMenu(habit)" *ngFor="let subTask of habit.getSubTasks()">
             {{ subTask.getNameTask() }}
           </ion-item>
         </ion-list>

@@ -6,17 +6,18 @@
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="habitForm" (ngSubmit)="onSubmit()">
     <ion-list>
       <ion-list-header>
         My Habit details
       </ion-list-header>
       <ion-item>
         <ion-label floating>Habit Name</ion-label>
-        <ion-input type="text" value=""></ion-input>
+        <ion-input type="text" formControlName="habitName" value=""></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Description</ion-label>
-        <ion-input type="text" value=""></ion-input>
+        <ion-input type="text" formControlName="description" value=""></ion-input>
       </ion-item>
       <ion-item>
           <ion-label>Habit Type</ion-label>
@@ -46,15 +47,15 @@
         </ion-item>
         <ion-item [class.hide]="displayDates">
           <ion-label>Start Date</ion-label>
-          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+          <ion-datetime displayFormat="MMM DD YYYY" ></ion-datetime>
         </ion-item>
         <ion-item [class.hide]="displayDates">
           <ion-label>End Date</ion-label>
-          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
+          <ion-datetime displayFormat="MMM DD YYYY" ></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>Start Time</ion-label>
-          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" ></ion-datetime>
         </ion-item>
         <ion-item>
             <ion-label>Add Location</ion-label>
@@ -102,4 +103,10 @@
           </ion-item-sliding>     
       </ion-item>
     </ion-list>
+    <button
+    type="submit"
+    ion-button
+    block
+    [disabled]="!habitForm.valid">{{ mode }} Habit</button>
+  </form>
 </ion-content>

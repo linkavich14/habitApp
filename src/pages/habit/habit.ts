@@ -1,18 +1,24 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetController } from 'ionic-angular';
 import { SubtaskPage } from '../subtask/subtask';
+import { Habit } from '../../models/habit-bean';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 @IonicPage()
 @Component({
   selector: 'page-habit',
   templateUrl: 'habit.html',
 })
-export class HabitPage {
+export class HabitPage implements OnInit{
   subTaskPage = SubtaskPage;
   displayToggleLocationOptions: boolean = true;
   displayMoreDetailsOptions: boolean = true;
   displaySubTasksOptions: boolean = true; 
   displayDates: boolean = false;
+
+  habit: Habit;
+  mode = "New";
+  habitForm: FormGroup;
 
   constructor(
     public navCtrl: NavController, 
@@ -21,6 +27,12 @@ export class HabitPage {
     public actionsheetCtrl: ActionSheetController) {
   }
 
+  ngOnInit(){  
+    if(this.mode == "Edit"){
+      this.mode = this.navParams.get("mode");
+    }
+    this.initializeForm();
+  }
   
  //new Date().getDate.toString
   public event = {
@@ -85,6 +97,21 @@ export class HabitPage {
 
   onToggleDates(toggle: Toggle) {
     this.displayDates = toggle.checked;
+  }
+
+  private initializeForm(){
+    let habitName = null;
+    let description = null;
+
+    if(this.mode == "Edit"){
+      habitName = this.habit.getHabitName();
+      description = this.habit.getDescription();
+    }
+
+    this.habitForm = new FormGroup({
+      "habitName": new FormControl(habitName, Validators.required),
+      "description": new FormControl(description, Validators.required)
+    });
   }
 
 }
