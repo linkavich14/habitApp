@@ -11,7 +11,6 @@ import { TutorialPage } from '../pages/tutorial/tutorial';
 import { AboutPage } from '../pages/about/about';
 import { CustomizePage } from '../pages/customize/customize';
 import { SigninPage } from '../pages/signin/signin';
-import { HomePage } from '../pages/home/home';
 
 @Component({
   templateUrl: 'app.html'
@@ -24,7 +23,7 @@ export class MyApp {
   aboutPage = AboutPage;
   customizePage = CustomizePage;
   logInPage = SigninPage;
-  homePage = HomePage;
+  tabsPage = TabsPage;
   
   @ViewChild('nav') nav: NavController;
   rootPage:any = TabsPage;

@@ -16,4 +16,17 @@ page-home {
       .action-sheet-destructive ion-icon {
         color: #757575;
       }
+
+      #subtasks {
+        width: 100%;
+        overflow: auto;
+      }
+      #showButtonSubTasks {
+        width: 50%;
+        float:left; /* add this */
+      }
+      #percentageSubtasks {
+          overflow: hidden; /* if you don't want #second to wrap below #first */
+      }
+
 }

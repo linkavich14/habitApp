@@ -21,10 +21,12 @@
         <p>{{ habit.getDescription() }}</p>
       </div>
       <div id="subtasks">
+       <div id="showButtonSubTasks"> 
         <button ion-button outline (click)="toggleDisplay(status)">
           {{ subTaskBtnText }}
         </button>
-      <div id="percentageSubtasks" style="width:20px;">
+      </div>
+      <div id="percentageSubtasks">
         43%
       </div>
     </div>
