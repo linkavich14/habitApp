@@ -16,9 +16,15 @@ export class HabitPage implements OnInit{
   displaySubTasksOptions: boolean = true; 
   displayDates: boolean = false;
 
+  moreOptionsInitial: boolean = false;
+  showSubTasksInitial: boolean = false;
+  locationAddedInitial: boolean = false;
+
   habit: Habit;
   mode = "New";
+  habitName: string;
   habitForm: FormGroup;
+  habitTypeOptions = ['Appointment', 'Goal', 'Reminder'];
 
   constructor(
     public navCtrl: NavController, 
@@ -28,8 +34,9 @@ export class HabitPage implements OnInit{
   }
 
   ngOnInit(){  
+    this.mode = this.navParams.get("mode");
     if(this.mode == "Edit"){
-      this.mode = this.navParams.get("mode");
+      this.habit = this.navParams.get("habit");
     }
     this.initializeForm();
   }
@@ -80,7 +87,7 @@ export class HabitPage implements OnInit{
   }
 
   loadSubTaskPage(page:any){
-    this.navCtrl.push(page);
+    this.navCtrl.push(page, {habit: this.habit, mode: "Edit"});
   }
 
   onToggleLocation(toggle: Toggle) {
@@ -100,18 +107,38 @@ export class HabitPage implements OnInit{
   }
 
   private initializeForm(){
-    let habitName = null;
     let description = null;
-
+    
     if(this.mode == "Edit"){
-      habitName = this.habit.getHabitName();
+      this.habitName = this.habit.getHabitName();
       description = this.habit.getDescription();
+      
+      this.locationAddedInitial = this.habit.getLocationAdded();
+      this.moreOptionsInitial = this.habit.getMoreDetails();
+
+      if(this.moreOptionsInitial){
+        this.displayMoreDetailsOptions = false;
+      }
+      
+      if(this.habit.getSubTasks().length > 0){
+        this.showSubTasksInitial = true;
+        this.displaySubTasksOptions = false;
+      }
+
+      if(this.locationAddedInitial) {
+        this.displayToggleLocationOptions = false;
+      }
+
     }
 
     this.habitForm = new FormGroup({
-      "habitName": new FormControl(habitName, Validators.required),
+      "habitName": new FormControl(this.habitName, Validators.required),
       "description": new FormControl(description, Validators.required)
     });
+  }
+
+  onSubmit(){
+    
   }
 
 }

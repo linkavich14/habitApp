@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Toggle } from 'ionic-angular';
+import { Habit } from '../../models/habit-bean';
+import { FormGroup } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -22,12 +24,26 @@ export class SubtaskPage {
   displayToggleLearningOptions: boolean = true;
   displayToggleBadHabitOptions: boolean = true;
 
+  habit: Habit;
+  subTaskForm: FormGroup;
+  subTaskName: string;
+  mode = "New";
+  subtaskTypeOptions = ['Appointment', 'Objective', 'Reminder', 'Habit'];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
   public event = {
     month: '1990-02-19',
     timeStarts: '07:43',
     timeEnds: '1990-02-20'
+  }
+
+  ngOnInit(){  
+    this.mode = this.navParams.get("mode");
+    if(this.mode == "Edit"){
+      
+    }
+    this.initializeForm();
   }
 
   ionViewDidLoad() {
@@ -58,6 +74,17 @@ export class SubtaskPage {
 
   onToggleDates(toggle: Toggle) {
     this.displayDates = toggle.checked;
+  }
+
+  private initializeForm(){
+
+    if(this.mode == "Edit"){
+
+    }
+  }
+
+  onSubmit(){
+
   }
 
 }

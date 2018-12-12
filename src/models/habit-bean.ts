@@ -11,6 +11,12 @@ export class Habit {
     private _location: string;
     private _status: number; // 1 active, 0 completed
     private _subTasks: SubTask[];
+    private _moreDetails: boolean;
+    private _locationAdded: boolean;
+    private _repeatHabit: boolean;
+    private _startDate: string;
+    private _endDate: string;
+    private _startTime: string;
     
     constructor(
         public habitUID: number,
@@ -21,7 +27,13 @@ export class Habit {
         public dateTo: Date,
         public location: string,
         public status: number,
-        public subtasks: SubTask[]){
+        public subtasks: SubTask[],
+        public moreDetails: boolean,
+        public locationAdded: boolean,
+        public repeatHabit: boolean,
+        public startDate: string,
+        public endDate: string,
+        public startTime: string){
             this._habitUID = habitUID;
             this._habitName = habitName;
             this._description = description;
@@ -31,6 +43,11 @@ export class Habit {
             this._location = location;
             this._status = status;
             this._subTasks = subtasks;
+            this._moreDetails = moreDetails;
+            this._repeatHabit = repeatHabit;
+            this._startDate = startDate;
+            this._endDate = endDate;
+            this._startTime = startTime;
     }
 
     public getHabitUID() {
@@ -94,4 +111,27 @@ export class Habit {
         this._subTasks = value;
     }
 
+    public getMoreDetails () {
+        return this._moreDetails;
+    }
+
+    public getLocationAdded () {
+        return this._locationAdded;
+    }
+
+    public getRepeatHabit () {
+        return this._repeatHabit;
+    }
+
+    public getStartDate () {
+        return this._startDate;
+    }
+
+    public getEndDate () {
+        return this._endDate;
+    }
+
+    public getStartTime () {
+        return this._startTime;
+    }
 }   

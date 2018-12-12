@@ -1,7 +1,7 @@
 
 <ion-header>
   <ion-navbar>
-    <ion-title>New Habit</ion-title>
+    <ion-title>{{ mode }} {{ habitName }}</ion-title>
   </ion-navbar>
 </ion-header>
 
@@ -13,27 +13,27 @@
       </ion-list-header>
       <ion-item>
         <ion-label floating>Habit Name</ion-label>
-        <ion-input type="text" formControlName="habitName" value=""></ion-input>
+        <ion-input type="text" formControlName="habitName"></ion-input>
       </ion-item>
       <ion-item>
         <ion-label floating>Description</ion-label>
-        <ion-input type="text" formControlName="description" value=""></ion-input>
+        <ion-input type="text" formControlName="description"></ion-input>
       </ion-item>
       <ion-item>
           <ion-label>Habit Type</ion-label>
           <ion-select interface="popover">
-            <ion-option value="nes">NES</ion-option>
-            <ion-option value="n64">Nintendo64</ion-option>
-            <ion-option value="ps">PlayStation</ion-option>
+              <ion-option
+              *ngFor="let option of habitTypeOptions"
+              [value]="option">{{ option }}</ion-option>
           </ion-select>
       </ion-item>
       <ion-item>
           <ion-label>Add more details</ion-label>
-          <ion-toggle value="moreDetails" checked="false" (ionChange)="onToggleMoreDetails($event)"></ion-toggle>
+          <ion-toggle value="moreDetails" [checked]="moreOptionsInitial" (ionChange)="onToggleMoreDetails($event)"></ion-toggle>
       </ion-item>
       <ion-item>
         <ion-label>Show subtasks</ion-label>
-        <ion-toggle value="showSubtasks" checked="false" (ionChange)="onToggleShowSubtasks($event)"></ion-toggle>
+        <ion-toggle value="showSubtasks" [checked]="showSubTasksInitial" (ionChange)="onToggleShowSubtasks($event)"></ion-toggle>
     </ion-item>
     </ion-list>
     <!--More details list-->
@@ -59,7 +59,7 @@
         </ion-item>
         <ion-item>
             <ion-label>Add Location</ion-label>
-            <ion-toggle value="map" checked="false" (ionChange)="onToggleLocation($event)"></ion-toggle>
+            <ion-toggle value="map" [checked]="locationAddedInitial" (ionChange)="onToggleLocation($event)"></ion-toggle>
         </ion-item>
     </ion-list>
     <ion-list no-lines [class.hide]="displayToggleLocationOptions">

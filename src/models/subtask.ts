@@ -2,7 +2,7 @@ export class SubTask {
     private _nameTask: string;
     private _dateFrom: Date;
     private _dateTo: Date;
-    private _status: number;
+    private _status: number; // 1 active, 0 completed
     private _type: number;
 
     constructor(

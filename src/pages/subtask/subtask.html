@@ -6,18 +6,19 @@
 </ion-header>
 
 <ion-content padding>
+  <form [formGroup]="subTaskForm" (ngSubmit)="onSubmit()">  
   <ion-list>
-    <ion-list-header>New Subtask</ion-list-header>
+    <ion-list-header>{{ mode }} Subtask</ion-list-header>
     <ion-item>
         <ion-label floating>Task Name</ion-label>
-        <ion-input type="text" value=""></ion-input>
+        <ion-input type="text"></ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Habit Type</ion-label>
         <ion-select interface="popover">
-          <ion-option value="habit">Habit</ion-option>
-          <ion-option value="appointment">Appointment</ion-option>
-          <ion-option value="reminder">Reminder</ion-option>
+          <ion-option
+              *ngFor="let option of subtaskTypeOptions"
+              [value]="option">{{ option }}</ion-option>
         </ion-select>
     </ion-item>
     <ion-item>
@@ -143,6 +144,5 @@
           </ion-item>
       </ion-list>
     </ion-list>
-
-
+  </form>
 </ion-content>

@@ -43,11 +43,18 @@ export class HomePage {
     }
   }  
 
-  onLoad(page: any, habit: Habit) {
-    this.navCtrl.push(page, {habit: habit, mode: "Edit"});
+  onLoad(page: any, habit: Habit, subTask: SubTask) {
+    if (habit) {
+      this.navCtrl.push(page, {habit: habit, mode: "Edit"});
+    } if (subTask){
+      this.navCtrl.push(page, {subtask: subTask, mode: "Edit"});
+    } else {
+      this.navCtrl.push(page, {mode: "New"})
+    }
+    
   }
 
-  openMenu(habit: Habit) {
+  openMenu(habit: Habit, subTask: SubTask) {
     let actionSheet = this.actionsheetCtrl.create({
       title: 'Subtask options',
       //cssClass: 'action-sheets-basic-page',
@@ -55,7 +62,7 @@ export class HomePage {
         {
           text: 'Edit',
           icon: !this.platform.is('ios') ? 'arrow-dropright-circle' : null,
-          handler: () => this.onLoad(this.subTaskPage, habit)
+          handler: () => this.onLoad(this.subTaskPage, habit, subTask)
         },
         {
           text: 'Delete',
