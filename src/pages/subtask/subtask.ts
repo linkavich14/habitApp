@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams, Toggle } from 'ionic-angular';
-import { Habit } from '../../models/habit-bean';
-import { FormGroup } from '@angular/forms';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { SubTask } from '../../models/subtask';
 
 @IonicPage()
 @Component({
@@ -24,7 +24,7 @@ export class SubtaskPage {
   displayToggleLearningOptions: boolean = true;
   displayToggleBadHabitOptions: boolean = true;
 
-  habit: Habit;
+  subTask: SubTask;
   subTaskForm: FormGroup;
   subTaskName: string;
   mode = "New";
@@ -41,7 +41,7 @@ export class SubtaskPage {
   ngOnInit(){  
     this.mode = this.navParams.get("mode");
     if(this.mode == "Edit"){
-      
+      this.subTask = this.navParams.get("subtask");
     }
     this.initializeForm();
   }
@@ -77,10 +77,13 @@ export class SubtaskPage {
   }
 
   private initializeForm(){
-
     if(this.mode == "Edit"){
-
+      this.subTaskName = this.subTask.getNameTask();
     }
+
+    this.subTaskForm = new FormGroup ({
+      "taskName": new FormControl(this.subTaskName, Validators.required)
+    });
   }
 
   onSubmit(){

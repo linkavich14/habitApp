@@ -11,7 +11,7 @@
     <ion-list-header>{{ mode }} Subtask</ion-list-header>
     <ion-item>
         <ion-label floating>Task Name</ion-label>
-        <ion-input type="text"></ion-input>
+        <ion-input type="text" formControlName="taskName"></ion-input>
     </ion-item>
     <ion-item>
         <ion-label>Habit Type</ion-label>
@@ -27,15 +27,15 @@
       </ion-item>
       <ion-item [class.hide]="displayDates">
         <ion-label>Start Date</ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.month"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD YYYY"></ion-datetime>
       </ion-item>
       <ion-item [class.hide]="displayDates">
         <ion-label>End Date</ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="event.timeEnds"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD YYYY"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Start Time</ion-label>
-        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="event.timeStarts"></ion-datetime>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>
       </ion-item>
       <ion-item [class.hide]="displayToggleLocation">
           <ion-label>Add Location</ion-label>
@@ -144,5 +144,10 @@
           </ion-item>
       </ion-list>
     </ion-list>
+    <button
+    type="submit"
+    ion-button
+    block
+    [disabled]="!subTaskForm.valid">{{ mode }} subtask</button>
   </form>
 </ion-content>

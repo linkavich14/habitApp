@@ -3,6 +3,7 @@ import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetContr
 import { SubtaskPage } from '../subtask/subtask';
 import { Habit } from '../../models/habit-bean';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { SubTask } from '../../models/subtask';
 
 @IonicPage()
 @Component({
@@ -10,7 +11,9 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
   templateUrl: 'habit.html',
 })
 export class HabitPage implements OnInit{
+  
   subTaskPage = SubtaskPage;
+
   displayToggleLocationOptions: boolean = true;
   displayMoreDetailsOptions: boolean = true;
   displaySubTasksOptions: boolean = true; 
@@ -21,9 +24,12 @@ export class HabitPage implements OnInit{
   locationAddedInitial: boolean = false;
 
   habit: Habit;
+  subTasksArray: SubTask[];
+  
   mode = "New";
   habitName: string;
   habitForm: FormGroup;
+
   habitTypeOptions = ['Appointment', 'Goal', 'Reminder'];
 
   constructor(
@@ -37,6 +43,7 @@ export class HabitPage implements OnInit{
     this.mode = this.navParams.get("mode");
     if(this.mode == "Edit"){
       this.habit = this.navParams.get("habit");
+      this.subTasksArray = this.habit.getSubTasks();
     }
     this.initializeForm();
   }
@@ -48,7 +55,7 @@ export class HabitPage implements OnInit{
     timeEnds: '1990-02-20'
   }
 
-  openMenuSubTask(){
+  openMenu(subTask: SubTask) {
     let actionSheet = this.actionsheetCtrl.create({
       title: 'Subtask options',
       //cssClass: 'action-sheets-basic-page',
@@ -56,7 +63,7 @@ export class HabitPage implements OnInit{
         {
           text: 'Edit',
           icon: !this.platform.is('ios') ? 'arrow-dropright-circle' : null,
-          handler: () => this.loadSubTaskPage(this.subTaskPage)
+          handler: () => this.loadSubTaskPage(this.subTaskPage, subTask)
         },
         {
           text: 'Delete',
@@ -86,8 +93,8 @@ export class HabitPage implements OnInit{
     actionSheet.present();
   }
 
-  loadSubTaskPage(page:any){
-    this.navCtrl.push(page, {habit: this.habit, mode: "Edit"});
+  loadSubTaskPage(page:any, subTask: SubTask){    
+    this.navCtrl.push(page, {subtask: subTask, mode: "Edit"});
   }
 
   onToggleLocation(toggle: Toggle) {
