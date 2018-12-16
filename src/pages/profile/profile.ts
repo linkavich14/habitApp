@@ -1,12 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-
-/**
- * Generated class for the ProfilePage page.
- *
- * See https://ionicframework.com/docs/components/#navigation for more info on
- * Ionic pages and navigation.
- */
+import { FormGroup, Validators, FormControl } from '@angular/forms';
 
 @IonicPage()
 @Component({
@@ -15,11 +9,32 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ProfilePage {
 
+  profileForm: FormGroup;
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
+  }
+
+  ngOnInit(){  
+    this.initializeForm();
   }
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad ProfilePage');
   }
 
+  private initializeForm(){
+    let fullName;
+    let email;
+    let password;
+
+    this.profileForm = new FormGroup({
+      "fullName": new FormControl(fullName, Validators.required),
+      "email": new FormControl(email, Validators.required),      
+      "password": new FormControl(password, Validators.required)
+    });
+  }
+
+  onSubmit() {
+
+  }
 }

@@ -12,32 +12,29 @@
 
 
 <ion-content padding>
+    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <ion-list no-lines>
         <ion-item>
           <ion-label floating>Full Name</ion-label>
-          <ion-input type="text"></ion-input>
+          <ion-input type="text" formControlName="fullName"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Email</ion-label>
-          <ion-input type="Email"></ion-input>
+          <ion-input type="Email" formControlName="email"></ion-input>
         </ion-item>
-        <ion-item>
-          <ion-label floating>Birthday</ion-label>
-          <ion-select [(ngModel)]="gaming">
-            <ion-option value="nes">NES</ion-option>
-            <ion-option value="n64">Nintendo64</ion-option>
-            <ion-option value="ps">PlayStation</ion-option>
-            <ion-option value="genesis">Sega Genesis</ion-option>
-            <ion-option value="saturn">Sega Saturn</ion-option>
-            <ion-option value="snes">SNES</ion-option>
-          </ion-select>
-        </ion-item>
+        <ion-item [class.hide]="displayDates">
+            <ion-label>Birthday</ion-label>
+            <ion-datetime displayFormat="MMM DD YYYY"></ion-datetime>
+          </ion-item>
         <ion-item>
             <ion-label floating>Password</ion-label>
-            <ion-input type="Password" value=""></ion-input>
+            <ion-input type="Password" value="" formControlName="password"></ion-input>
         </ion-item>     
       </ion-list>
-      <div padding>
-        <button ion-button block>Save</button>
-      </div>
+      <button
+        type="submit"
+        ion-button
+        block
+        [disabled]="!profileForm.valid">Save Profile</button>
+    </form>  
 </ion-content>

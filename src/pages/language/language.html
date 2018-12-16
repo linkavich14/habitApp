@@ -14,12 +14,12 @@
   <ion-list>
     <ion-list-header>Select a language</ion-list-header>
     <ion-item>
-      <ion-label floating>Language</ion-label>
-      <ion-select>
-        <ion-option value="ENG">English</ion-option>
-        <ion-option value="ESP">Spanish</ion-option>
-        <ion-option value="DEU">German</ion-option>
-      </ion-select>
+        <ion-label floating>Language</ion-label>
+        <ion-select interface="popover">
+          <ion-option
+              *ngFor="let option of languagesOptions"
+              [value]="option">{{ option }}</ion-option>
+        </ion-select>
     </ion-item>  
   </ion-list>
 </ion-content>
