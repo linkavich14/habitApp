@@ -23,8 +23,8 @@
           <ion-label>Habit Type</ion-label>
           <ion-select interface="popover">
               <ion-option
-              *ngFor="let option of habitTypeOptions"
-              [value]="option">{{ option }}</ion-option>
+              *ngFor="let option of habitTypeOptions; let i = index"
+              [value]="i">{{ option }}</ion-option>
           </ion-select>
       </ion-item>
       <ion-item>

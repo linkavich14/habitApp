@@ -4,6 +4,7 @@ import { SubtaskPage } from '../subtask/subtask';
 import { Habit } from '../../models/habit-bean';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { SubTask } from '../../models/subtask';
+import { HabitsService } from '../../services/habits-service';
 
 @IonicPage()
 @Component({
@@ -36,7 +37,8 @@ export class HabitPage implements OnInit{
     public navCtrl: NavController, 
     public navParams: NavParams,
     public platform: Platform,
-    public actionsheetCtrl: ActionSheetController) {
+    public actionsheetCtrl: ActionSheetController,
+    public habitService: HabitsService) {
   }
 
   ngOnInit(){  
@@ -49,10 +51,12 @@ export class HabitPage implements OnInit{
   }
   
  //new Date().getDate.toString
-  public event = {
-    month: '1990-02-19',
-    timeStarts: '07:43',
-    timeEnds: '1990-02-20'
+  deleteSubTask(subTask: SubTask) {
+    
+  }
+
+  completeSubTask(subTask: SubTask) {
+    this.habitService.completeTask(subTask);
   }
 
   openMenu(subTask: SubTask) {
@@ -69,16 +73,12 @@ export class HabitPage implements OnInit{
           text: 'Delete',
           role: 'destructive',
           icon: !this.platform.is('ios') ? 'trash' : null,
-          handler: () => {
-            console.log('Delete clicked');
-          }
+          handler: () => this.deleteSubTask(subTask)
         },
         {
           text: 'Complete',
           icon: !this.platform.is('ios') ? 'share' : null,
-          handler: () => {
-            console.log('Share clicked');
-          }
+          handler: () => this.completeSubTask(subTask)
         },
         {
           text: 'Cancel',
@@ -115,6 +115,8 @@ export class HabitPage implements OnInit{
 
   private initializeForm(){
     let description = null;
+    let habitType = null;
+    
     
     if(this.mode == "Edit"){
       this.habitName = this.habit.getHabitName();

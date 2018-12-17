@@ -8,6 +8,8 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class CustomizePage {
 
+  colorsOptions = ['Default', 'Dark', 'Blue', 'Green'];
+
   constructor(public navCtrl: NavController, public navParams: NavParams) {
   }
 

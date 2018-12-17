@@ -18,10 +18,9 @@
     <ion-item>
         <ion-label>App Theme</ion-label>
         <ion-select interface="popover">
-          <ion-option value="default">Default</ion-option>
-          <ion-option value="black">Dark</ion-option>
-          <ion-option value="blue">Blue</ion-option>
-          <ion-option value="green">Green</ion-option>
+            <ion-option
+            *ngFor="let option of colorsOptions"
+            [value]="option">{{ option }}</ion-option>
         </ion-select>
     </ion-item>
   </ion-list>

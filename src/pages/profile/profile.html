@@ -13,7 +13,8 @@
 
 <ion-content padding>
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
-    <ion-list no-lines>
+    <ion-list>
+        <ion-list-header>Create your profile</ion-list-header>
         <ion-item>
           <ion-label floating>Full Name</ion-label>
           <ion-input type="text" formControlName="fullName"></ion-input>
@@ -22,10 +23,6 @@
           <ion-label floating>Email</ion-label>
           <ion-input type="Email" formControlName="email"></ion-input>
         </ion-item>
-        <ion-item [class.hide]="displayDates">
-            <ion-label>Birthday</ion-label>
-            <ion-datetime displayFormat="MMM DD YYYY"></ion-datetime>
-          </ion-item>
         <ion-item>
             <ion-label floating>Password</ion-label>
             <ion-input type="Password" value="" formControlName="password"></ion-input>

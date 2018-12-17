@@ -1,4 +1,5 @@
 export class SubTask {
+    private _id: number;
     private _nameTask: string;
     private _dateFrom: Date;
     private _dateTo: Date;
@@ -6,11 +7,13 @@ export class SubTask {
     private _type: number;
 
     constructor(
+        public id: number,
         public taskName:string,
         public fromDate: Date,
         public toTadet: Date,
         public statusTask: number,
         public typeTask: number){
+            this._id = id;
             this._nameTask = taskName;
         }
 
@@ -43,5 +46,9 @@ export class SubTask {
     }
     public set type(value: number) {
         this._type = value;
+    }
+
+    public getId() {
+        return this._id;
     }
 }
