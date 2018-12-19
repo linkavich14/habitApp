@@ -28,7 +28,17 @@ export class SubtaskPage {
   subTaskForm: FormGroup;
   subTaskName: string;
   mode = "New";
+  startDate: String = new Date().toISOString();
+  endDate: String = new Date().toISOString();
+  startTime: String = new Date().toISOString();
+  travelTime: String = new Date().toISOString();
+
+  //Dropbox options
   subtaskTypeOptions = ['Appointment', 'Objective', 'Reminder', 'Habit'];
+  moneyGoalsOptions = ['Save % every week', 'Reduce my debt', 'Donate money', 'Stop wasting money', 'Other'];
+  healthGoalsOptions = ['Workout at Gym', 'Run', 'Other'];
+  educationGoalsOptions = ['Finish an Assignment', 'Complete a course', 'Get a good grade', 'Other'];
+  badHabitRemoveOptions = ['Stop smoking', 'Reduce drinking alcohol', 'Other'];
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 

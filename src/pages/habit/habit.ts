@@ -23,6 +23,8 @@ export class HabitPage implements OnInit{
   moreOptionsInitial: boolean = false;
   showSubTasksInitial: boolean = false;
   locationAddedInitial: boolean = false;
+  repeatInitial: boolean = false;
+  hsbitTypeInitial: Number;
 
   habit: Habit;
   subTasksArray: SubTask[];
@@ -30,6 +32,12 @@ export class HabitPage implements OnInit{
   mode = "New";
   habitName: string;
   habitForm: FormGroup;
+
+  habitType : number;
+  startDate: String = new Date().toISOString();
+  endDate: String = new Date().toISOString();
+  startTime: String = new Date().toISOString();
+  travelTime: String = new Date().toISOString();
 
   habitTypeOptions = ['Appointment', 'Goal', 'Reminder'];
 
@@ -46,11 +54,11 @@ export class HabitPage implements OnInit{
     if(this.mode == "Edit"){
       this.habit = this.navParams.get("habit");
       this.subTasksArray = this.habit.getSubTasks();
+      this.habitType = this.habit.getTypeHabit();
     }
     this.initializeForm();
   }
   
- //new Date().getDate.toString
   deleteSubTask(subTask: SubTask) {
     
   }
@@ -97,6 +105,10 @@ export class HabitPage implements OnInit{
     this.navCtrl.push(page, {subtask: subTask, mode: "Edit"});
   }
 
+  createNewSubTask(page:any) {
+    this.navCtrl.push(page, {mode: "New"});
+  }
+
   onToggleLocation(toggle: Toggle) {
     this.displayToggleLocationOptions = !toggle.checked;
   }
@@ -115,8 +127,6 @@ export class HabitPage implements OnInit{
 
   private initializeForm(){
     let description = null;
-    //let habitType = null;
-    
     
     if(this.mode == "Edit"){
       this.habitName = this.habit.getHabitName();
@@ -124,6 +134,7 @@ export class HabitPage implements OnInit{
       
       this.locationAddedInitial = this.habit.getLocationAdded();
       this.moreOptionsInitial = this.habit.getMoreDetails();
+      this.repeatInitial = this.habit.getRepeatHabit();
 
       if(this.moreOptionsInitial){
         this.displayMoreDetailsOptions = false;

@@ -21,7 +21,7 @@
       </ion-item>
       <ion-item>
           <ion-label>Habit Type</ion-label>
-          <ion-select interface="popover" formControlName="habitType">
+          <ion-select interface="popover">
               <ion-option
               *ngFor="let option of habitTypeOptions; let i = index"
               [value]="i">{{ option }}</ion-option>
@@ -43,19 +43,19 @@
         </ion-list-header>
         <ion-item>
           <ion-label>Repeat</ion-label>
-          <ion-toggle value="repeat" checked="false" (ionChange)="onToggleDates($event)"></ion-toggle>
+          <ion-toggle value="repeat" [checked]="repeatInitial" (ionChange)="onToggleDates($event)"></ion-toggle>
         </ion-item>
         <ion-item [class.hide]="displayDates">
           <ion-label>Start Date</ion-label>
-          <ion-datetime displayFormat="MMM DD YYYY" ></ion-datetime>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}"></ion-datetime>
         </ion-item>
         <ion-item [class.hide]="displayDates">
           <ion-label>End Date</ion-label>
-          <ion-datetime displayFormat="MMM DD YYYY" ></ion-datetime>
+          <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}"></ion-datetime>
         </ion-item>
         <ion-item>
           <ion-label>Start Time</ion-label>
-          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" ></ion-datetime>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="startTime" [ngModelOptions]="{standalone: true}"></ion-datetime>
         </ion-item>
         <ion-item>
             <ion-label>Add Location</ion-label>
@@ -69,16 +69,16 @@
       <ion-item>
           Aparece Mapa
       </ion-item>
-      <button ion-item>
+      <ion-item>
         <ion-label>Travel Time</ion-label>
-        <ion-note item-end>None</ion-note>
-      </button>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="travelTime" [ngModelOptions]="{standalone: true}"></ion-datetime>
+      </ion-item>
     </ion-list>
     <!--Subtasks list-->    
     <ion-list [class.hide]="displaySubTasksOptions">
       <ion-list-header>
         My Habit subtasks 
-        <button ion-button item-end outline icon-end (click)="loadSubTaskPage(subTaskPage)">
+        <button ion-button item-end outline icon-end (click)="createNewSubTask(subTaskPage)">
             Create new
             <ion-icon name='star'></ion-icon>
         </button>

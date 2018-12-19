@@ -27,15 +27,15 @@
       </ion-item>
       <ion-item [class.hide]="displayDates">
         <ion-label>Start Date</ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="startDate" [ngModelOptions]="{standalone: true}"></ion-datetime>    
       </ion-item>
       <ion-item [class.hide]="displayDates">
         <ion-label>End Date</ion-label>
-        <ion-datetime displayFormat="MMM DD YYYY"></ion-datetime>
+        <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}"></ion-datetime>
       </ion-item>
       <ion-item>
         <ion-label>Start Time</ion-label>
-        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A"></ion-datetime>
+        <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="startTime" [ngModelOptions]="{standalone: true}"></ion-datetime>
       </ion-item>
       <ion-item [class.hide]="displayToggleLocation">
           <ion-label>Add Location</ion-label>
@@ -48,10 +48,10 @@
         <ion-item>
             Aparece Mapa
         </ion-item>
-        <button ion-item>
+        <ion-item>
           <ion-label>Travel Time</ion-label>
-          <ion-note item-end>None</ion-note>
-        </button>
+          <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="travelTime" [ngModelOptions]="{standalone: true}"></ion-datetime>
+        </ion-item>
       </ion-list>
       <!--Money Section-->
       <ion-item [class.hide]="displayToggleMoney">
@@ -65,9 +65,9 @@
           <ion-item>
               <ion-label>Your goal ?</ion-label>
               <ion-select interface="popover">
-                <ion-option value="save">Save % every week</ion-option>
-                <ion-option value="debt">Reduce my debt</ion-option>
-                <ion-option value="other">Other</ion-option>
+                <ion-option
+                *ngFor="let option of moneyGoalsOptions; let i = index"
+                [value]="i">{{ option }}</ion-option>
               </ion-select>         
           </ion-item>
           <ion-item>
@@ -87,9 +87,9 @@
           <ion-item>
             <ion-label>Your goal ?</ion-label>
             <ion-select interface="popover">
-              <ion-option value="workout">Workout Gym</ion-option>
-              <ion-option value="run">Run</ion-option>
-              <ion-option value="other">Other</ion-option>
+                <ion-option
+                *ngFor="let option of healthGoalsOptions; let i = index"
+                [value]="i">{{ option }}</ion-option>              
             </ion-select>         
           </ion-item>
           <ion-item>
@@ -109,10 +109,9 @@
           <ion-item>
             <ion-label>Your goal ?</ion-label>
             <ion-select interface="popover">
-              <ion-option value="assignment">Finish assignment</ion-option>
-              <ion-option value="course">Complete course</ion-option>
-              <ion-option value="grade">Get a good grade</ion-option>
-              <ion-option value="other">Other</ion-option>
+                <ion-option
+                *ngFor="let option of educationGoalsOptions; let i = index"
+                [value]="i">{{ option }}</ion-option>
             </ion-select>         
           </ion-item>
           <ion-item>
@@ -132,10 +131,9 @@
           <ion-item>
             <ion-label>Your goal ?</ion-label>
             <ion-select interface="popover">
-              <ion-option value="assignment">Finish assignment</ion-option>
-              <ion-option value="course">Complete course</ion-option>
-              <ion-option value="grade">Get a good grade</ion-option>
-              <ion-option value="other">Other</ion-option>
+                <ion-option
+                *ngFor="let option of badHabitRemoveOptions; let i = index"
+                [value]="i">{{ option }}</ion-option>
             </ion-select>         
           </ion-item>
           <ion-item>
