@@ -21,7 +21,7 @@
       </ion-item>
       <ion-item>
           <ion-label>Habit Type</ion-label>
-          <ion-select interface="popover">
+          <ion-select interface="popover" formControlName="habitType">
               <ion-option
               *ngFor="let option of habitTypeOptions; let i = index"
               [value]="i">{{ option }}</ion-option>

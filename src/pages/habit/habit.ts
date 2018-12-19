@@ -115,7 +115,7 @@ export class HabitPage implements OnInit{
 
   private initializeForm(){
     let description = null;
-    let habitType = null;
+    //let habitType = null;
     
     
     if(this.mode == "Edit"){
