@@ -70,9 +70,15 @@
                 [value]="i">{{ option }}</ion-option>
               </ion-select>         
           </ion-item>
-          <ion-item>
+          <ion-item [class.hide]="displayMoneyGoalPercentage">
               <ion-label floating>Percentage</ion-label>
-              <ion-input type="text" value=""></ion-input>
+              <ion-input type="text"></ion-input>
+          </ion-item>
+          <ion-item [class.hide]="displayBudgetFields">
+              <ion-label>Want to create a Budget ?</ion-label>
+              <button ion-button outline (click)="loadBudgetScreen(budgetPage)">
+                {{ moneyBudgetButton }}
+              </button>
           </ion-item>          
       </ion-list>
       <!--Exercise section-->
@@ -92,9 +98,9 @@
                 [value]="i">{{ option }}</ion-option>              
             </ion-select>         
           </ion-item>
-          <ion-item>
+          <ion-item [class.hide]="displayKmInput">
               <ion-label floating>How many km</ion-label>
-              <ion-input type="text" value=""></ion-input>
+              <ion-input type="text" ></ion-input>
           </ion-item>
       </ion-list>
       <!--Learning Section-->
@@ -114,8 +120,8 @@
                 [value]="i">{{ option }}</ion-option>
             </ion-select>         
           </ion-item>
-          <ion-item>
-              <ion-label floating>Which</ion-label>
+          <ion-item [class.hide]="displayEducationGoalField">
+              <ion-label floating>{{ educationFieldLabel }}</ion-label>
               <ion-input type="text" value=""></ion-input>
           </ion-item>
       </ion-list>
@@ -136,7 +142,7 @@
                 [value]="i">{{ option }}</ion-option>
             </ion-select>         
           </ion-item>
-          <ion-item>
+          <ion-item [class.hide]="displayBadHabitField">
               <ion-label floating>Which</ion-label>
               <ion-input type="text" value=""></ion-input>
           </ion-item>

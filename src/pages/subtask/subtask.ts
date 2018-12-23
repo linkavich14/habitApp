@@ -24,6 +24,18 @@ export class SubtaskPage {
   displayToggleLearningOptions: boolean = true;
   displayToggleBadHabitOptions: boolean = true;
 
+  //Toggles display inputs
+  displayKmInput: boolean = false;
+  displayMoneyGoalPercentage: boolean = false;
+  displayEducationGoalField: boolean = false;
+  displayBadHabitField: boolean = false;
+
+  //Toggles display buttons
+  displayBudgetFields: boolean = true;//don't show for now
+
+  //Buttons labels
+  moneyBudgetButton = "Create my budget";
+
   subTask: SubTask;
   subTaskForm: FormGroup;
   subTaskName: string;
@@ -33,12 +45,15 @@ export class SubtaskPage {
   startTime: String = new Date().toISOString();
   travelTime: String = new Date().toISOString();
 
-  //Dropbox options
+  //Combobox options
   subtaskTypeOptions = ['Appointment', 'Objective', 'Reminder', 'Habit'];
   moneyGoalsOptions = ['Save % every week', 'Reduce my debt', 'Donate money', 'Stop wasting money', 'Other'];
   healthGoalsOptions = ['Workout at Gym', 'Run', 'Other'];
-  educationGoalsOptions = ['Finish an Assignment', 'Complete a course', 'Get a good grade', 'Other'];
+  educationGoalsOptions = ['Finish an Assignment', 'Complete a course', 'Improve my grades', 'Do not fail any course', 'Other'];
   badHabitRemoveOptions = ['Stop smoking', 'Reduce drinking alcohol', 'Other'];
+
+  //Fields related to combobox selected
+  educationFieldLabel: String;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {}
 
@@ -58,6 +73,10 @@ export class SubtaskPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad SubtaskPage');
+  }
+
+  loadBudgetScreen(page:any){
+    this.navCtrl.push(page);
   }
 
   onToggleMoney(toggle: Toggle){
@@ -97,6 +116,10 @@ export class SubtaskPage {
   }
 
   onSubmit(){
+
+  }
+
+  onMoneyOptionChosen(selected: number) {
 
   }
 

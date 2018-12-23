@@ -49,6 +49,8 @@ export class HabitPage implements OnInit{
     public habitService: HabitsService) {
   }
 
+  //Poblar opciones automaticamente en para hacerlo mas facil y rapido usuario
+
   ngOnInit(){  
     this.mode = this.navParams.get("mode");
     if(this.mode == "Edit"){
