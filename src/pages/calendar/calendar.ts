@@ -62,6 +62,80 @@ export class CalendarPage {
     this.selectedDay = ev.selectedTime;
   }
 
+  /*
+
+  <ion-header>
+  <ion-navbar color="primary">
+    <ion-buttons start>
+      <button ion-button icon-only (click)="cancel()">
+        <ion-icon name="close"></ion-icon>
+      </button>
+    </ion-buttons>
+    <ion-title>Event Details</ion-title>
+  </ion-navbar>
+</ion-header>
+ 
+<ion-content>
+  <ion-list>
+    <ion-item>
+      <ion-input type="text" placeholder="Title" [(ngModel)]="event.title"></ion-input>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>Start</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.startTime" [min]="minDate"></ion-datetime>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>End</ion-label>
+      <ion-datetime displayFormat="MM/DD/YYYY HH:mm" pickerFormat="MMM D:HH:mm" [(ngModel)]="event.endTime" [min]="minDate"></ion-datetime>
+    </ion-item>
+ 
+    <ion-item>
+      <ion-label>All Day?</ion-label>
+      <ion-checkbox [(ngModel)]="event.allDay"></ion-checkbox>
+    </ion-item>
+  </ion-list>
+ 
+  <button ion-button full icon-left (click)="save()">
+    <ion-icon name="checkmark"></ion-icon> Add Event
+  </button>
+</ion-content>
+
+
+import { Component } from '@angular/core';
+import { IonicPage, NavController, NavParams, ViewController } from 'ionic-angular';
+import * as moment from 'moment';
+ 
+@IonicPage()
+@Component({
+  selector: 'page-event-modal',
+  templateUrl: 'event-modal.html',
+})
+export class EventModalPage {
+ 
+  event = { startTime: new Date().toISOString(), endTime: new Date().toISOString(), allDay: false };
+  minDate = new Date().toISOString();
+ 
+  constructor(public navCtrl: NavController, private navParams: NavParams, public viewCtrl: ViewController) {
+    let preselectedDate = moment(this.navParams.get('selectedDay')).format();
+    this.event.startTime = preselectedDate;
+    this.event.endTime = preselectedDate;
+  }
+ 
+  cancel() {
+    this.viewCtrl.dismiss();
+  }
+ 
+  save() {
+    this.viewCtrl.dismiss(this.event);
+  }
+ 
+}
+
+
+
+  */
  
 
 }
