@@ -7,6 +7,14 @@ import { TranslateService } from '@ngx-translate/core';
   selector: 'page-language',
   templateUrl: 'language.html',
 })
+
+/*
+Hay que agregar dependencias manualmente para i18n
+npm install @ngx-translate/core --save
+npm i rxjs@^6.0 rxjs-compat
+*/
+
+
 export class LanguagePage {
   lang:any;
   languagesOptions = ['English', 'Deustch', 'Espanol', 'Francais'];
