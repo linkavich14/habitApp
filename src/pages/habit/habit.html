@@ -27,6 +27,14 @@
               [value]="i">{{ option }}</ion-option>
           </ion-select>
       </ion-item>
+      <ion-item [class.hide]="displayHabits">
+        <ion-label>{{ prepolutatedHabitsLabel }}</ion-label>
+        <ion-select interface="popover">
+          <ion-option
+          *ngFor="let option of prepopulatedOptions; let i = index"
+          [value]="i">{{ option }}</ion-option>
+      </ion-select>
+      </ion-item>
       <ion-item>
           <ion-label>Add more details</ion-label>
           <ion-toggle value="moreDetails" [checked]="moreOptionsInitial" (ionChange)="onToggleMoreDetails($event)"></ion-toggle>

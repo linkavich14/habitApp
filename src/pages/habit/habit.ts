@@ -19,12 +19,13 @@ export class HabitPage implements OnInit{
   displayMoreDetailsOptions: boolean = true;
   displaySubTasksOptions: boolean = true; 
   displayDates: boolean = false;
+  displayHabits: boolean = true;
 
   moreOptionsInitial: boolean = false;
   showSubTasksInitial: boolean = false;
   locationAddedInitial: boolean = false;
   repeatInitial: boolean = false;
-  hsbitTypeInitial: Number;
+  habitTypeInitial: Number;
 
   habit: Habit;
   subTasksArray: SubTask[];
@@ -40,6 +41,9 @@ export class HabitPage implements OnInit{
   travelTime: String = new Date().toISOString();
 
   habitTypeOptions = ['Appointment', 'Goal', 'Reminder'];
+  prepopulatedOptions = [];
+  prepolutatedHabitsLabel: string = "Select a habit or create a new one";
+
 
   constructor(
     public navCtrl: NavController, 
