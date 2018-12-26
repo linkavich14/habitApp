@@ -12,33 +12,37 @@
 <ion-content>
   <ion-list>
     <ion-list-header>My Habits</ion-list-header>
-    <ion-item *ngFor="let habit of habits">        
-      <ion-avatar item-start>
-        <img src="" alt="">
-      </ion-avatar>
-      <div (click)="onLoad(habitPage, habit)">
-        <h2>{{ habit.getHabitName() }}</h2>
-        <p>{{ habit.getDescription() }}</p>
+    <ion-item-group reorder="true"  (ionItemReorder)="reorderItems($event)">
+      <ion-item *ngFor="let habit of habits">        
+        <ion-avatar item-start>
+          <img src="" alt="">
+        </ion-avatar>
+        <div (click)="onLoad(habitPage, habit)">
+          <h2>{{ habit.getHabitName() }}</h2>
+          <p>{{ habit.getDescription() }}</p>
+        </div>
+        <div id="subtasks">
+        <div id="showButtonSubTasks"> 
+          <button ion-button outline (click)="toggleDisplay(status)">
+            {{ subTaskBtnText }}
+          </button>
+        </div>
+        <div id="percentageSubtasks">
+          43%
+        </div>
       </div>
-      <div id="subtasks">
-       <div id="showButtonSubTasks"> 
-        <button ion-button outline (click)="toggleDisplay(status)">
-          {{ subTaskBtnText }}
-        </button>
-      </div>
-      <div id="percentageSubtasks">
-        43%
-      </div>
-    </div>
-      <ion-list [class.hide]="status" no-lines>
-        <ion-list-header>
-          My Subtasks
-        </ion-list-header>  
-        <ion-item (click)="openMenu(subTask)" *ngFor="let subTask of habit.getSubTasks()">
-            {{ subTask.getNameTask() }}
-          </ion-item>
-        </ion-list>
-    </ion-item>
+        <ion-item-group id="mysubtasks">
+          <ion-list [class.hide]="status" no-lines>
+            <ion-list-header>
+              My Subtasks
+            </ion-list-header>  
+            <ion-item (click)="openMenu(subTask)" *ngFor="let subTask of habit.getSubTasks()">
+                {{ subTask.getNameTask() }}
+              </ion-item>
+          </ion-list>
+        </ion-item-group>
+      </ion-item>
+  </ion-item-group>
   </ion-list>
   <ion-fab right bottom>
       <button ion-fab color="vibrant" mini (click)="onLoad(habitPage)">

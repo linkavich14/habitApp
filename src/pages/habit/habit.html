@@ -91,9 +91,11 @@
             <ion-icon name='star'></ion-icon>
         </button>
       </ion-list-header>
-      <ion-item (click)="openMenu(subTask)" *ngFor="let subTask of subTasksArray">
-        {{ subTask.getNameTask() }}
-      </ion-item>      
+      <ion-item-group reorder="true"  (ionItemReorder)="reorderItems($event)">
+          <ion-item (click)="openMenu(subTask)" *ngFor="let subTask of subTasksArray">
+              {{ subTask.getNameTask() }}
+          </ion-item> 
+      </ion-item-group> 
     </ion-list>
     <button
     type="submit"

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetController } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetController, reorderArray } from 'ionic-angular';
 import { SubtaskPage } from '../subtask/subtask';
 import { Habit } from '../../models/habit-bean';
 import { FormGroup, FormControl, Validators } from '@angular/forms';
@@ -165,6 +165,10 @@ export class HabitPage implements OnInit{
 
   onSubmit(){
     
+  }
+
+  reorderItems(indexes){
+    this.subTasksArray = reorderArray(this.subTasksArray, indexes);
   }
 
 }

@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavController, ActionSheetController, Platform } from 'ionic-angular';
+import { NavController, ActionSheetController, Platform, reorderArray } from 'ionic-angular';
 import { TabsPage } from '../tabs/tabs';
 import { HabitPage } from '../habit/habit';
 import { SubtaskPage } from '../subtask/subtask';
@@ -93,6 +93,10 @@ export class HomePage {
       ]
     });
     actionSheet.present();
+  }
+
+  reorderItems(indexes){
+    this.habits = reorderArray(this.habits, indexes);
   }
 
 }
