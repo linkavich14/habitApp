@@ -13,9 +13,14 @@
 <calendar [eventSource]="eventSource"
         [calendarMode]="calendar.mode"
         [currentDate]="calendar.currentDate"
+        [locale]="calendar.locale"
+        (onCurrentDateChanged)="onCurrentDateChanged($event)"
         (onEventSelected)="onEventSelected($event)"
         (onTitleChanged)="onViewTitleChanged($event)"
         (onTimeSelected)="onTimeSelected($event)"
+        showEventDetail=true
+        [formatMonthTitle]="calendar.formatMonth"
+        [formatDayHeader]='calendar.formatDay'
         step="30"
         class="calendar">
       </calendar>

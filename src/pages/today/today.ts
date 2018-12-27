@@ -15,4 +15,8 @@ export class TodayPage {
     console.log('ionViewDidLoad TodayPage');
   }
 
+  reorderItems(indexes){
+    
+  }
+
 }

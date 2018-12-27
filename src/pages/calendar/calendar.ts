@@ -17,7 +17,10 @@ export class CalendarPage {
 
   calendar = {
     mode: 'month',
-    currentDate: new Date()
+    locale: 'en-GB',
+    currentDate: new Date(),
+    formatMonth: 'MMMM yyyy',
+    formatDay: 'EE'
   };
 
   constructor(public navCtrl: NavController, private modalCtrl: ModalController, private alertCtrl: AlertController) { }
@@ -61,6 +64,10 @@ export class CalendarPage {
   onTimeSelected(ev) {
     this.selectedDay = ev.selectedTime;
   }
+
+  onCurrentDateChanged(event) {
+    console.log(event);
+  }  
 
   /*
 

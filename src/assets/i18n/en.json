@@ -1,5 +1,16 @@
 {
     "LANGUAGE": "Language",
     "SELECT_LANG": "Select Language",
-    "CALENDAR": "Calendar"
+    "CALENDAR": "Calendar",
+    "HOME": "Home",
+    "TODAY": "Today",
+    "STATISTICS": "Statistics",
+    "SIGN_UP": "Sign Up",
+    "LOG_IN": "Log In",
+    "PROFILE": "Profile",
+    "NOTIFICATIONS": "Notifications",
+    "TUTORIAL": "Tutorial",
+    "CUSTOMIZE": "Customize",
+    "ABOUT": "About",
+    "SHOW_TASKS": "Show Tasks"
 }
