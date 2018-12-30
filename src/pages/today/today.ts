@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Habit } from '../../models/habit-bean';
+import { HabitsService } from '../../services/habits-service';
 
 @IonicPage()
 @Component({
@@ -8,7 +10,14 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class TodayPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  habits: Habit[];
+  constructor(public navCtrl: NavController, 
+              public navParams: NavParams,
+              private habitService: HabitsService,) {
+  }
+
+  ionViewWillEnter(){
+
   }
 
   ionViewDidLoad() {

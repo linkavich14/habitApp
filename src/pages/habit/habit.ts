@@ -54,6 +54,22 @@ export class HabitPage implements OnInit{
   }
 
   //Poblar opciones automaticamente en para hacerlo mas facil y rapido usuario
+  //Traducir idiomas y ver como inicializar el idioma
+  //Poner y crear eventos en el calendario
+  //Imagen perfil en el menu
+  //Imagenes para los habitos
+  //Estadisticas
+  //Agrupar habitos por tipo
+  //Permitir crear grupos
+  //Hacer validacion de login y signin
+  //Creacion y Modificacion de perfil
+  //Hacer notificaciones
+  //Crear tutorial
+  //Hacer temas para customize
+  //Generar porcentaje
+  //Poblar today con los que tienen fecha para hoy
+  //Salvar, borrar y completar habitos
+  //Agregar mapa de microsoft
 
   ngOnInit(){  
     this.mode = this.navParams.get("mode");

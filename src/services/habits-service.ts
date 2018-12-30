@@ -20,6 +20,10 @@ export class HabitsService {
         return this.habits.slice();
     }
 
+    getHabitsByDate(){
+        
+    }
+
     updateHabit(id: number, habit: Habit) {
         this.habits[id] = habit;
     }
