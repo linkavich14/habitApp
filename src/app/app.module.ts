@@ -35,6 +35,14 @@ import { CustomizePage } from '../pages/customize/customize';
 import { NgCalendarModule  } from 'ionic2-calendar';
 import { ComponentsModule } from '../components/components.module';
 
+//Firebase
+import { AngularFireModule } from 'angularfire2';
+import { FIREBASE_CONFIG } from './firebase.credentials';
+import { AngularFireDatabaseModule } from 'angularfire2/database';
+
+import { SQLite } from '@ionic-native/sqlite';
+import { AuthService } from '../services/auth';
+
 
 export function createTranslateLoader(http: HttpClient) {
   return new TranslateHttpLoader(http, './assets/i18n/', '.json');
@@ -65,6 +73,8 @@ export function createTranslateLoader(http: HttpClient) {
     BrowserModule,
     ComponentsModule,
     IonicModule.forRoot(MyApp),
+    AngularFireModule.initializeApp(FIREBASE_CONFIG),
+    AngularFireDatabaseModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {
@@ -100,6 +110,8 @@ export function createTranslateLoader(http: HttpClient) {
     HabitsService,
     SubTaskService,
     UsersService,
+    SQLite,
+    AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })

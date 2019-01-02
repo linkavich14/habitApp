@@ -10,6 +10,10 @@ import { LanguagePage } from '../pages/language/language';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { AboutPage } from '../pages/about/about';
 import { CustomizePage } from '../pages/customize/customize';
+import { SignupPage } from '../pages/signup/signup';
+import { AuthService } from '../services/auth';
+import firebase from 'firebase';
+import { FIREBASE_CONFIG } from './firebase.credentials';
 import { SigninPage } from '../pages/signin/signin';
 
 @Component({
@@ -22,13 +26,33 @@ export class MyApp {
   tutorialPage = TutorialPage;
   aboutPage = AboutPage;
   customizePage = CustomizePage;
-  logInPage = SigninPage;
+  signupPage = SignupPage;
+  signinPage = SigninPage;
   tabsPage = TabsPage;
+
+  isAuthenticated = false;
   
   @ViewChild('nav') nav: NavController;
   rootPage:any = TabsPage;
 
-  constructor(platform: Platform, statusBar: StatusBar, splashScreen: SplashScreen, private menuCtrl: MenuController) {
+  constructor(platform: Platform, 
+              statusBar: StatusBar, 
+              splashScreen: SplashScreen,
+              private menuCtrl: MenuController,
+              private authService: AuthService) {
+    
+    firebase.initializeApp(FIREBASE_CONFIG);
+
+    firebase.auth().onAuthStateChanged(user => {
+      if (user) {
+        this.isAuthenticated = true;
+        this.rootPage = TabsPage;
+      } else {
+        this.isAuthenticated = false;
+        //this.rootPage = SigninPage;
+      }
+    });
+
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -40,5 +64,11 @@ export class MyApp {
   onLoad(page: any) {
     this.nav.setRoot(page);
     this.menuCtrl.close();
+  }
+
+  onLogout() {
+    this.authService.logout();
+    this.menuCtrl.close();
+    this.nav.setRoot(SigninPage);
   }
 }

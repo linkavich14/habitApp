@@ -91,7 +91,7 @@
             <ion-icon name='star'></ion-icon>
         </button>
       </ion-list-header>
-      <ion-item-group reorder="true"  (ionItemReorder)="reorderItems($event)">
+      <ion-item-group formArrayName="subTasksList" reorder="true"  (ionItemReorder)="reorderItems($event)">
           <ion-item (click)="openMenu(subTask)" *ngFor="let subTask of subTasksArray">
               {{ subTask.getNameTask() }}
           </ion-item> 

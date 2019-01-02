@@ -6,25 +6,27 @@
             <ion-icon name="menu"></ion-icon>
           </button>
     </ion-buttons>
-  <ion-title>Sign In</ion-title>
+  <ion-title>Log In</ion-title>
 </ion-navbar>
 </ion-header>
-
+<!--Para mantener privada la cuenta-->
 <ion-content padding>
-  <ion-list>
-    <ion-list-header>
-      Welcome back!
-    </ion-list-header>
-    <ion-item>
-        <ion-label floating>Username/email</ion-label>
-        <ion-input type="text" value=""></ion-input>
-    </ion-item>
-    <ion-item>
-        <ion-label floating>Password</ion-label>
-        <ion-input type="Password" value=""></ion-input>
-    </ion-item>
-  </ion-list>
-  <div padding>
-      <button ion-button block>Log me in</button>
-  </div>
+  <form #loginForm="ngForm" (ngSubmit)="onSubmit(loginForm)">   
+    <ion-list>
+      <ion-list-header>
+        Welcome back!
+      </ion-list-header>
+      <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email" ngModel name="email" required></ion-input>
+      </ion-item>
+      <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input type="Password" ngModel name="password" required></ion-input>
+      </ion-item>
+    </ion-list>
+    <div padding>
+        <button type="submit" ion-button block [disabled]="!loginForm.valid">Log me in</button>
+    </div>
+  </form> 
 </ion-content>

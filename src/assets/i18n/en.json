@@ -1,32 +1,60 @@
-{
-    "LANGUAGE": "Language",
-    "SELECT_LANG": "Select Language",
-    "CALENDAR": "Calendar",
-    "HOME": "Home",
-    "TODAY": "Today",
-    "STATISTICS": "Statistics",
-    "SETTINGS": "Settings",
-    "SIGN_UP": "Sign Up",
-    "LOG_IN": "Log In",
-    "PROFILE": "Profile",
-    "NOTIFICATIONS": "Notifications",
-    "TUTORIAL": "Tutorial",
-    "CUSTOMIZE": "Customize",
-    "ABOUT": "About",
-    "SHOW_TASKS": "Show Tasks",
-    "MY_HABITS": "My Habits",
-    "MY_HABIT_DETAILS": "My Habit Details",
-    "HABIT_NAME": "Habit Name",
-    "DESCRIPTION": "Description",
-    "HABIT_TYPE": "Habit Type",
-    "APPOINTMENT": "Appointment",
-    "GOAL": "Goal",
-    "REMINDER": "Reminder",
-    "ADD_MORE_DETAILS": "Add More Details",
-    "MORE_DETAILS": "More Details",
-    "REPEAT": "Repeat",
-    "START_DATE": "Start Date",
-    "END_DATE": "End Date",
-    "START_TIME": "Start Time",
-    "ADD_LOCATION": "Add Location"
+{   
+    "HOME": {
+        "HOME": "Home",
+        "MY_HABITS": "My Habits",
+        "SHOW_TASKS": "Show Tasks",
+        "TODAY": "Today",
+        "CALENDAR": "Calendar",
+        "STATISTICS": "Statistics"
+    },
+    "SETTINGS": {
+        "SETTINGS":  "Settings",
+        "SIGN_UP": "Sign Up",
+        "LOG_IN": "Log In",
+        "PROFILE": "Profile",
+        "NOTIFICATIONS": "Notifications",
+        "LANGUAGE": "Language",
+        "TUTORIAL": "Tutorial",
+        "CUSTOMIZE": "Customize",
+        "ABOUT": "About"
+    },
+    "SIGN_UP": {
+        "TITLE": "Sign Up"
+    },
+    "PROFILE": {
+
+    },
+    "NOTIFICATIONS": {
+
+    },
+    "LANGUAGE": {
+        "LANGUAGE": "Language",
+        "SELECT_LANG": "Select Language" 
+    },
+    "TUTORIAL": {
+
+    },
+    "CUSTOMIZE": {
+
+    },
+    "ABOUT": {
+
+    },
+    "HABIT": {
+        "MY_HABIT_DETAILS": "My Habit Details",
+        "HABIT_NAME": "Habit Name",
+        "DESCRIPTION": "Description",
+        "HABIT_TYPE": "Habit Type",
+        "APPOINTMENT": "Appointment",
+        "GOAL": "Goal",
+        "REMINDER": "Reminder",
+        "ADD_MORE_DETAILS": "Add More Details",
+        "MORE_DETAILS": "More Details",
+        "REPEAT": "Repeat",
+        "START_DATE": "Start Date",
+        "END_DATE": "End Date",
+        "START_TIME": "Start Time",
+        "ADD_LOCATION": "Add Location"
+    }
+    
 }

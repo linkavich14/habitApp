@@ -12,9 +12,9 @@
 
 <ion-content padding>
   <ion-list>
-    <ion-list-header>{{ 'SELECT_LANG' | translate }}</ion-list-header>
+    <ion-list-header>{{ 'LANGUAGE.SELECT_LANG' | translate }}</ion-list-header>
     <ion-item>
-        <ion-label>{{ 'LANGUAGE' | translate }}</ion-label>
+        <ion-label>{{ 'LANGUAGE.LANGUAGE' | translate }}</ion-label>
         <ion-select [(ngModel)]="lang" interface="popover" (ionChange)="switchLanguage()">
           <ion-option
               *ngFor="let option of languagesOptions let i = index"

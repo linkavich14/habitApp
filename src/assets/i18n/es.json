@@ -1,5 +1,14 @@
-{
-    "LANGUAGE": "Lenguaje",
-    "SELECT_LANG": "Selecciona tu lenguaje",
-    "CALENDAR": "Calendario"
+{   
+    "HOME": {
+        "HOME": "Inicio",
+        "MY_HABITS": "Mis Habitos",
+        "SHOW_TASKS": "Mostrar Tareas",
+        "TODAY": "Hoy",
+        "CALENDAR": "Calendario",
+        "STATISTICS": "Estadisticas"
+    },
+    "LANGUAGE": {
+        "LANGUAGE": "Lenguaje",
+        "SELECT_LANG": "Selecciona tu lenguaje" 
+    }
 }

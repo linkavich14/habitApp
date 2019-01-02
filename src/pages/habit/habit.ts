@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetController, reorderArray } from 'ionic-angular';
 import { SubtaskPage } from '../subtask/subtask';
 import { Habit } from '../../models/habit-bean';
-import { FormGroup, FormControl, Validators } from '@angular/forms';
+import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { SubTask } from '../../models/subtask';
 import { HabitsService } from '../../services/habits-service';
 
@@ -53,23 +53,24 @@ export class HabitPage implements OnInit{
     public habitService: HabitsService) {
   }
 
-  //Poblar opciones automaticamente en para hacerlo mas facil y rapido usuario
-  //Traducir idiomas y ver como inicializar el idioma
+
+  //Hacer validacion de login y signin  
+  //Hacer base de datos interna
+  //Creacion y Modificacion de perfil
+  //Salvar, borrar y completar habitos
   //Poner y crear eventos en el calendario
-  //Imagen perfil en el menu
   //Imagenes para los habitos
   //Estadisticas
   //Agrupar habitos por tipo
   //Permitir crear grupos
-  //Hacer validacion de login y signin
-  //Creacion y Modificacion de perfil
   //Hacer notificaciones
-  //Crear tutorial
   //Hacer temas para customize
   //Generar porcentaje
   //Poblar today con los que tienen fecha para hoy
-  //Salvar, borrar y completar habitos
   //Agregar mapa de microsoft
+  //Traducir idiomas y ver como inicializar el idioma
+  //Poblar opciones automaticamente en para hacerlo mas facil y rapido usuario
+  //Crear tutorial
 
   ngOnInit(){  
     this.mode = this.navParams.get("mode");
@@ -149,6 +150,7 @@ export class HabitPage implements OnInit{
 
   private initializeForm(){
     let description = null;
+    let subTasksList = [];
     
     if(this.mode == "Edit"){
       this.habitName = this.habit.getHabitName();
@@ -175,12 +177,33 @@ export class HabitPage implements OnInit{
 
     this.habitForm = new FormGroup({
       "habitName": new FormControl(this.habitName, Validators.required),
-      "description": new FormControl(description, Validators.required)
+      "description": new FormControl(description, Validators.required),
+      "subTasksList": new FormArray(subTasksList)
     });
   }
 
   onSubmit(){
+    const value = this.habitForm.value;
+    let subtasks = [];
     
+    if(value.subTasksList.length > 0){
+      //subtasks = value.subTasksList.map()
+    }
+
+    if (this.mode == "Edit") {
+
+    }else {
+      
+      var newHabit = new Habit(1, "Mi applicacion", "Hacer cosas", 1, 
+      new Date(), new Date(), "location", 1, [
+          new SubTask(1 , "my subtask", new Date(), new Date(), 1, 1),
+          new SubTask(2 , "subtask 2", new Date(), new Date(), 1, 1),
+          new SubTask(3 , "subtask 3", new Date(), new Date(), 1, 1)
+      ], true, true , false , "1 Dec 2018", "10 Dec 2018", "9:00:00");
+      
+
+      this.habitService.addHabit(newHabit);
+    }
   }
 
   reorderItems(indexes){

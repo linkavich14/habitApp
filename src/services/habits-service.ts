@@ -1,6 +1,9 @@
 import { Habit } from "../models/habit-bean";
 import { SubTask } from "../models/subtask";
+import { AngularFireDatabase } from "angularfire2/database";
+import { Injectable } from "@angular/core";
 
+@Injectable()
 export class HabitsService {
 
     private habits: Habit[] = [
@@ -11,9 +14,13 @@ export class HabitsService {
                 new SubTask(3 , "subtask 3", new Date(), new Date(), 1, 1)
             ], true, true , false , "1 Dec 2018", "10 Dec 2018", "9:00:00")
     ];
+
+    private habitListRef = this.db.list<Habit>('habit-list');
+
+    constructor(public db: AngularFireDatabase) {}
     
     addHabit(habit: Habit) {
-        this.habits.push(habit);
+        return this.habitListRef.push(habit);
     }
 
     getHabits() {
@@ -43,5 +50,5 @@ export class HabitsService {
     completeTask(subtask: SubTask){
         
     }
-    
+
 }
