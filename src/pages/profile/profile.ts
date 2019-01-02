@@ -1,6 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { FormGroup, Validators, FormControl } from '@angular/forms';
+import { IonicPage, NavController, NavParams, Toggle } from 'ionic-angular';
+import { FormGroup, Validators, FormControl, NgForm } from '@angular/forms';
+import { SubscriptionPage } from '../subscription/subscription';
+import { ExportDataPage } from '../export-data/export-data';
+import firebase from 'firebase';
 
 @IonicPage()
 @Component({
@@ -9,6 +12,8 @@ import { FormGroup, Validators, FormControl } from '@angular/forms';
 })
 export class ProfilePage {
 
+  subscriptionPage = SubscriptionPage;
+  exportDataPage = ExportDataPage;
   profileForm: FormGroup;
 
   constructor(public navCtrl: NavController, public navParams: NavParams) {
@@ -18,23 +23,36 @@ export class ProfilePage {
     this.initializeForm();
   }
 
-  ionViewDidLoad() {
-    console.log('ionViewDidLoad ProfilePage');
-  }
-
   private initializeForm(){
-    let fullName;
-    let email;
-    let password;
+    let fullName: any;
+    let email = firebase.auth().currentUser.email;
+    let userName: any;
 
     this.profileForm = new FormGroup({
       "fullName": new FormControl(fullName, Validators.required),
       "email": new FormControl(email, Validators.required),      
-      "password": new FormControl(password, Validators.required)
+      "userName": new FormControl(userName, Validators.required)
     });
   }
 
   onSubmit() {
+    const value = this.profileForm.value;
+    debugger;
+  }
 
+  onLoad(page: any){
+    this.navCtrl.push(page);
+  }
+
+  onSyncAppleCalendar(toggle: Toggle){
+
+  }
+
+  onSyncGoogleCalendar(toggle: Toggle){
+
+  }
+
+  onSyncMicrosoftCalendar(toggle: Toggle){
+    
   }
 }

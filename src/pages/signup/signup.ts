@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
 import { NgForm } from "@angular/forms";
-import { IonicPage, LoadingController, AlertController } from 'ionic-angular';
+import { IonicPage, LoadingController, AlertController, NavController, MenuController } from 'ionic-angular';
 import { AuthService } from '../../services/auth';
+import { SigninPage } from '../signin/signin';
+import { TabsPage } from '../tabs/tabs';
 
 
 @IonicPage()
@@ -11,9 +13,14 @@ import { AuthService } from '../../services/auth';
 })
 export class SignupPage {
 
+  tabsPage = TabsPage;
+  signinPage = SigninPage;
+
   constructor(private authService: AuthService,
               private loadingCtrl: LoadingController,
-              private alertCtrl: AlertController) {
+              private menuCtrl: MenuController,
+              private alertCtrl: AlertController,
+              public navCtrl: NavController) {
   }
 
   onSubmit(form: NgForm) {
@@ -24,6 +31,7 @@ export class SignupPage {
     this.authService.signup(form.value.email, form.value.password)
       .then(data => {
         loading.dismiss();
+        this.navCtrl.setRoot(TabsPage);
       })
       .catch(error => {
         loading.dismiss();
@@ -34,6 +42,11 @@ export class SignupPage {
         });
         alert.present();
       });
+  }
+
+  onLoad(page: any) {
+    this.navCtrl.push(page);
+    this.menuCtrl.close();
   }
 
 }

@@ -1,44 +1,32 @@
 import { Habit } from "./habit-bean";
 
 export class User {
-    private _name: string;
-    private _age: number;
-    private _gender: string;
+    private _fullName: string;
     private _email: string;
-    private _password: string;
+    private _userName: string;
     private _currentHabits: Habit[];
     private _previousHabits: Habit[];
 
     public getName(): string {
-        return this._name;
+        return this._fullName;
     }
     public setName(value: string) {
-        this._name = value;
+        this._fullName = value;
     }
 
-    public getAge(): number {
-        return this._age;
+    public getUserName(): string {
+        return this._userName;
     }
-    public setAge(value: number) {
-        this._age = value;
+
+    public setUserName(value: string) {
+        this._userName = value;
     }
-    public get gender(): string {
-        return this._gender;
-    }
-    public set gender(value: string) {
-        this._gender = value;
-    }
+
     public get email(): string {
         return this._email;
     }
     public set email(value: string) {
         this._email = value;
-    }
-    public get password(): string {
-        return this._password;
-    }
-    public set password(value: string) {
-        this._password = value;
     }
     public get currentHabits(): Habit[] {
         return this._currentHabits;

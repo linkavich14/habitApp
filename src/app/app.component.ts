@@ -49,7 +49,7 @@ export class MyApp {
         this.rootPage = TabsPage;
       } else {
         this.isAuthenticated = false;
-        //this.rootPage = SigninPage;
+        this.rootPage = TabsPage;
       }
     });
 
@@ -69,6 +69,6 @@ export class MyApp {
   onLogout() {
     this.authService.logout();
     this.menuCtrl.close();
-    this.nav.setRoot(SigninPage);
+    this.nav.setRoot(TabsPage);
   }
 }

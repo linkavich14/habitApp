@@ -14,24 +14,46 @@
 <ion-content padding>
     <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
     <ion-list>
-        <ion-list-header>Create your profile</ion-list-header>
+        <ion-list-header>Make changes to your profile</ion-list-header>
         <ion-item>
           <ion-label floating>Full Name</ion-label>
           <ion-input type="text" formControlName="fullName"></ion-input>
         </ion-item>
         <ion-item>
-          <ion-label floating>Email</ion-label>
-          <ion-input type="Email" formControlName="email"></ion-input>
+          <ion-label floating>Username</ion-label>
+          <ion-input type="text" formControlName="userName"></ion-input>
         </ion-item>
         <ion-item>
-            <ion-label floating>Password</ion-label>
-            <ion-input type="Password" value="" formControlName="password"></ion-input>
-        </ion-item>     
+          <ion-label floating>Email</ion-label>
+          <ion-input type="email" formControlName="email"></ion-input>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sync with Apple Calendar</ion-label>
+            <ion-toggle value="appleCalendar" (ionChange)="onSyncAppleCalendar($event)"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sync with Google Calendar</ion-label>
+            <ion-toggle value="googleCalendar" (ionChange)="onSyncGoogleCalendar($event)"></ion-toggle>
+        </ion-item>
+        <ion-item>
+            <ion-label>Sync with Microsoft Calendar</ion-label>
+            <ion-toggle value="microsoftCalendar" (ionChange)="onSyncMicrosoftCalendar($event)"></ion-toggle>
+        </ion-item>
+        <button ion-item>
+            Change Password
+        </button>
+        <button ion-item (click)="onLoad(subscriptionPage)">
+            <ion-icon name="star" item-left></ion-icon>
+            Get Paid Subscription
+        </button>
+        <button ion-item (click)="onLoad(exportDataPage)">
+          Export Data
+        </button>    
       </ion-list>
       <button
         type="submit"
         ion-button
         block
-        [disabled]="!profileForm.valid">Save Profile</button>
+        [disabled]="!profileForm.valid">Update Profile</button>
     </form>  
 </ion-content>

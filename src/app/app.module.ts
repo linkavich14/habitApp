@@ -42,6 +42,8 @@ import { AngularFireDatabaseModule } from 'angularfire2/database';
 
 import { SQLite } from '@ionic-native/sqlite';
 import { AuthService } from '../services/auth';
+import { SubscriptionPage } from '../pages/subscription/subscription';
+import { ExportDataPage } from '../pages/export-data/export-data';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -66,7 +68,9 @@ export function createTranslateLoader(http: HttpClient) {
     TutorialPage,
     AboutPage,
     CustomizePage,
-    TodayPage
+    TodayPage,
+    SubscriptionPage,
+    ExportDataPage
   ],
   imports: [
     NgCalendarModule,
@@ -102,7 +106,9 @@ export function createTranslateLoader(http: HttpClient) {
     TutorialPage,
     AboutPage,
     CustomizePage,
-    TodayPage
+    TodayPage,
+    SubscriptionPage,
+    ExportDataPage
   ],
   providers: [
     StatusBar,

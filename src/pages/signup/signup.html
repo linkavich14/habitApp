@@ -29,4 +29,8 @@
             <button type="submit" ion-button block [disabled]="!registerForm.valid">Sign me up</button>
         </div>
     </form>
+    <div>
+        <p>Already registered, please login</p>
+        <button ion-button outline (click)="onLoad(signinPage)">Go to login screen </button>
+    </div>
 </ion-content>
