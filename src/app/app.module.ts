@@ -44,6 +44,8 @@ import { SQLite } from '@ionic-native/sqlite';
 import { AuthService } from '../services/auth';
 import { SubscriptionPage } from '../pages/subscription/subscription';
 import { ExportDataPage } from '../pages/export-data/export-data';
+import { LoggerModule } from 'ngx-logger';
+import { LogConfig } from '../config/logconfig';
 
 
 export function createTranslateLoader(http: HttpClient) {
@@ -86,7 +88,8 @@ export function createTranslateLoader(http: HttpClient) {
         useFactory: createTranslateLoader,
         deps: [HttpClient]
       }
-    })
+    }),
+    LoggerModule.forRoot(LogConfig.logging)
   ],
   bootstrap: [IonicApp],
   entryComponents: [

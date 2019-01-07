@@ -53,8 +53,6 @@ export class HabitPage implements OnInit{
     public habitService: HabitsService) {
   }
 
-  //Hacer base de datos interna
-  //Creacion y Modificacion de perfil
   //Salvar, borrar y completar habitos
   //Poner y crear eventos en el calendario
   //Imagenes para los habitos
@@ -66,6 +64,7 @@ export class HabitPage implements OnInit{
   //Generar porcentaje
   //Poblar today con los que tienen fecha para hoy
   //Agregar mapa de microsoft
+  //Hacer base de datos interna
   //Traducir idiomas y ver como inicializar el idioma
   //Poblar opciones automaticamente en para hacerlo mas facil y rapido usuario
   //Crear tutorial

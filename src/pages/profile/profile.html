@@ -12,20 +12,20 @@
 
 
 <ion-content padding>
-    <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <form #profileForm="ngForm" (ngSubmit)="onSubmit(profileForm)">
     <ion-list>
         <ion-list-header>Make changes to your profile</ion-list-header>
         <ion-item>
           <ion-label floating>Full Name</ion-label>
-          <ion-input type="text" formControlName="fullName"></ion-input>
+          <ion-input type="text" [(ngModel)]="fullName" [ngModelOptions]="{standalone: true}"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Username</ion-label>
-          <ion-input type="text" formControlName="userName"></ion-input>
+          <ion-input type="text" [(ngModel)]="userName" [ngModelOptions]="{standalone: true}"></ion-input>
         </ion-item>
         <ion-item>
           <ion-label floating>Email</ion-label>
-          <ion-input type="email" formControlName="email"></ion-input>
+          <ion-input type="email" [(ngModel)]="email" [ngModelOptions]="{standalone: true}"></ion-input>
         </ion-item>
         <ion-item>
             <ion-label>Sync with Apple Calendar</ion-label>

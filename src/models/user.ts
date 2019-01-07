@@ -1,11 +1,20 @@
 import { Habit } from "./habit-bean";
 
 export class User {
+    private _uid: string;
     private _fullName: string;
     private _email: string;
     private _userName: string;
     private _currentHabits: Habit[];
     private _previousHabits: Habit[];
+
+    public getUid(): string {
+        return this._uid;
+    }
+
+    public setUid(value: string) {
+        this._uid = value;
+    }
 
     public getName(): string {
         return this._fullName;
@@ -22,22 +31,22 @@ export class User {
         this._userName = value;
     }
 
-    public get email(): string {
+    public getEmail(): string {
         return this._email;
     }
-    public set email(value: string) {
+    public setEmail(value: string) {
         this._email = value;
     }
-    public get currentHabits(): Habit[] {
+    public getCurrentHabits(): Habit[] {
         return this._currentHabits;
     }
-    public set currentHabits(value: Habit[]) {
+    public setCurrentHabits(value: Habit[]) {
         this._currentHabits = value;
     }
-    public get previousHabits(): Habit[] {
+    public getPreviousHabits(): Habit[] {
         return this._previousHabits;
     }
-    public set previousHabits(value: Habit[]) {
+    public setPreviousHabits(value: Habit[]) {
         this._previousHabits = value;
     }
 }
