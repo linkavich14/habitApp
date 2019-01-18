@@ -5,14 +5,15 @@ import { HttpClientModule, HttpClient } from '@angular/common/http';
 import { TranslateModule, TranslateLoader } from '@ngx-translate/core';
 import { TranslateHttpLoader } from '@ngx-translate/http-loader';
 import { MyApp } from './app.component';
+import { StatusBar } from '@ionic-native/status-bar';
+import { SplashScreen } from '@ionic-native/splash-screen';
 
 //Services
 import { HabitsService } from '../services/habits-service';
 import { SubTaskService } from '../services/subtasks-service';
 import { UsersService } from '../services/users-service';
-
-import { StatusBar } from '@ionic-native/status-bar';
-import { SplashScreen } from '@ionic-native/splash-screen';
+import { AuthService } from '../services/auth';
+import { ApplicationService } from '../services/application-service';
 
 //Pages
 import { CalendarPage } from '../pages/calendar/calendar';
@@ -30,6 +31,8 @@ import { NotificationPage } from '../pages/notification/notification';
 import { TutorialPage } from '../pages/tutorial/tutorial';
 import { TodayPage } from '../pages/today/today';
 import { CustomizePage } from '../pages/customize/customize';
+import { SubscriptionPage } from '../pages/subscription/subscription';
+import { ExportDataPage } from '../pages/export-data/export-data';
 
 //Modules
 import { NgCalendarModule  } from 'ionic2-calendar';
@@ -40,10 +43,10 @@ import { AngularFireModule } from 'angularfire2';
 import { FIREBASE_CONFIG } from './firebase.credentials';
 import { AngularFireDatabaseModule } from 'angularfire2/database';
 
+//Local Database
 import { SQLite } from '@ionic-native/sqlite';
-import { AuthService } from '../services/auth';
-import { SubscriptionPage } from '../pages/subscription/subscription';
-import { ExportDataPage } from '../pages/export-data/export-data';
+
+//Logger
 import { LoggerModule } from 'ngx-logger';
 import { LogConfig } from '../config/logconfig';
 
@@ -119,6 +122,7 @@ export function createTranslateLoader(http: HttpClient) {
     HabitsService,
     SubTaskService,
     UsersService,
+    ApplicationService,
     SQLite,
     AuthService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}

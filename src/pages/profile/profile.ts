@@ -9,6 +9,7 @@ import { UsersService } from '../../services/users-service';
 import { ToastController } from "ionic-angular";
 import { User } from '../../models/user';
 import { NGXLogger } from 'ngx-logger';
+import { ApplicationService } from '../../services/application-service';
 
 @IonicPage()
 @Component({
@@ -29,9 +30,13 @@ export class ProfilePage {
       public navCtrl: NavController, 
       public navParams: NavParams, 
       public usersService: UsersService,
+      public applicationService: ApplicationService,
       private alertCtrl: AlertController,
       public toastCtrl: ToastController,
       private logger: NGXLogger) {
+        if(this.applicationService.userData){
+          this.userData = this.applicationService.userData;
+        }
   }
 
   ngOnInit() {
@@ -42,7 +47,8 @@ export class ProfilePage {
         (token: string) => {
           this.usersService.getUser(token).subscribe (
             (data) => {
-              this.userData = JSON.parse(data);
+              this.applicationService.userData = JSON.parse(data);
+              this.userData = this.applicationService.userData;
               this.initializeForm();
               console.log('Loaded User data');              
             },
@@ -82,7 +88,7 @@ export class ProfilePage {
   }
 
   onSubmit(form: NgForm) {
-    const value = this.profileForm.value;
+    const value = form.value;
     var user = new User;
     user.setUid(firebase.auth().currentUser.uid);
     user.setEmail(value.email);
@@ -119,7 +125,7 @@ export class ProfilePage {
         position: position
     });
     toast.present(toast);
-}
+  }
 
   onLoad(page: any){
     this.navCtrl.push(page);

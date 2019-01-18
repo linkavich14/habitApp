@@ -6,8 +6,8 @@ export class Habit {
     public _habitName: string;
     private _description: string;
     private _typeHabit: number;
-    private _dateFrom: Date;
-    private _dateTo: Date;
+    private _dateFrom: String;
+    private _dateTo: String;
     private _location: string;
     private _status: number; // 1 active, 0 completed
     private _subTasks: SubTask[];
@@ -18,6 +18,7 @@ export class Habit {
     private _endDate: string;
     private _startTime: string;
     
+    /*
     constructor(
         public habitUID: number,
         public habitName: string, 
@@ -49,6 +50,9 @@ export class Habit {
             this._endDate = endDate;
             this._startTime = startTime;
     }
+    */
+    
+    constructor(){}
 
     public getHabitUID() {
         return this._habitUID;
@@ -76,17 +80,17 @@ export class Habit {
         this._typeHabit = value;
     }
 
-    public getDateFrom(): Date {
+    public getDateFrom(): String {
         return this._dateFrom;
     }
-    public setDateFrom(value: Date) {
+    public setDateFrom(value: String) {
         this._dateFrom = value;
     }
 
-    public getDateTo(): Date {
+    public getDateTo(): String {
         return this._dateTo;
     }
-    public setDateTo(value: Date) {
+    public setDateTo(value: String) {
         this._dateTo = value;
     }
 
@@ -115,12 +119,20 @@ export class Habit {
         return this._moreDetails;
     }
 
+    public setMoreDetails (value: boolean) {
+        this._moreDetails = value;
+    }
+
     public getLocationAdded () {
         return this._locationAdded;
     }
 
     public getRepeatHabit () {
         return this._repeatHabit;
+    }
+
+    public setRepeatHabit (value: boolean) {
+        this._repeatHabit = value;
     }
 
     public getStartDate () {
@@ -133,5 +145,9 @@ export class Habit {
 
     public getStartTime () {
         return this._startTime;
+    }
+
+    public setStartTime (value: string) {
+        this._startTime = value;
     }
 }   

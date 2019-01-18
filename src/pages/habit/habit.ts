@@ -1,10 +1,14 @@
 import { Component, OnInit } from '@angular/core';
-import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetController, reorderArray } from 'ionic-angular';
+import { IonicPage, NavController, NavParams, Toggle, Platform, ActionSheetController, reorderArray, AlertController, ToastController } from 'ionic-angular';
 import { SubtaskPage } from '../subtask/subtask';
+import { TabsPage } from '../tabs/tabs';
 import { Habit } from '../../models/habit-bean';
 import { FormGroup, FormControl, Validators, FormArray } from '@angular/forms';
 import { SubTask } from '../../models/subtask';
+import { NGXLogger } from 'ngx-logger';
+import firebase from 'firebase';
 import { HabitsService } from '../../services/habits-service';
+import { ApplicationService } from '../../services/application-service';
 
 @IonicPage()
 @Component({
@@ -34,23 +38,30 @@ export class HabitPage implements OnInit{
   habitName: string;
   habitForm: FormGroup;
 
-  habitType : number;
-  startDate: String = new Date().toISOString();
-  endDate: String = new Date().toISOString();
-  startTime: String = new Date().toISOString();
-  travelTime: String = new Date().toISOString();
+  habitType : number = 0;
+  startDate: string = new Date().toISOString();
+  endDate: string = new Date().toISOString();
+  startTime: string = new Date().toISOString();
+  travelTime: string = new Date().toISOString();
 
-  habitTypeOptions = ['Appointment', 'Goal', 'Reminder'];
+  habitTypeOptions = ['Habit', 'Appointment', 'Goal', 'Reminder'];
   prepopulatedOptions = [];
   prepolutatedHabitsLabel: string = "Select a habit or create a new one";
 
+  private habitValues: any;
+  private habitObject: Habit = new Habit();
 
   constructor(
     public navCtrl: NavController, 
     public navParams: NavParams,
     public platform: Platform,
+    private alertCtrl: AlertController,
+    public toastCtrl: ToastController,
     public actionsheetCtrl: ActionSheetController,
-    public habitService: HabitsService) {
+    public applicationService: ApplicationService,
+    public habitService: HabitsService,
+    private logger: NGXLogger) {
+      this.habitObject.setRepeatHabit(false);
   }
 
   //Salvar, borrar y completar habitos
@@ -126,6 +137,8 @@ export class HabitPage implements OnInit{
   }
 
   createNewSubTask(page:any) {
+    this.createObject();
+    this.applicationService.currenthabit = this.habitObject;
     this.navCtrl.push(page, {mode: "New"});
   }
 
@@ -135,14 +148,43 @@ export class HabitPage implements OnInit{
 
   onToggleMoreDetails(toggle: Toggle) {
     this.displayMoreDetailsOptions = !toggle.checked;
+    this.habitObject.setMoreDetails(toggle.checked);
   }
 
   onToggleShowSubtasks(toggle: Toggle){
     this.displaySubTasksOptions = !toggle.checked;
   }
-
+  /**
+   * Sets the repeat type habit
+   * @param toggle 
+   */
   onToggleDates(toggle: Toggle) {
     this.displayDates = toggle.checked;
+    this.habitObject.setRepeatHabit(toggle.checked);
+  }
+
+  private createObject () {
+    this.habitValues = this.habitForm.value;
+    this.habitObject.setHabitName(this.habitValues.habitName);
+    this.habitObject.setDescription(this.habitValues.description);
+    this.habitObject.setTypeHabit(this.habitType);
+    
+    if(this.habitObject.getMoreDetails() == true) {
+      if(this.habitObject.getRepeatHabit() == false) {
+        this.habitObject.setDateFrom(this.startDate);
+        this.habitObject.setDateTo(this.endDate);
+      } else {
+        this.habitObject.setDateFrom('');
+        this.habitObject.setDateTo('');
+      }
+      this.habitObject.setStartTime(this.startTime);
+    } else {
+      this.habitObject.setDateFrom('');
+      this.habitObject.setDateTo('');
+      this.habitObject.setStartTime('');
+    }
+
+    
   }
 
   private initializeForm(){
@@ -180,27 +222,62 @@ export class HabitPage implements OnInit{
   }
 
   onSubmit(){
-    const value = this.habitForm.value;
-    let subtasks = [];
     
-    if(value.subTasksList.length > 0){
+    if(this.habitValues.subTasksList.length > 0){
       //subtasks = value.subTasksList.map()
     }
 
     if (this.mode == "Edit") {
 
     }else {
+
       
+      this.createObject();
+      console.log(this.habitObject);
+
+      /*
       var newHabit = new Habit(1, "Mi applicacion", "Hacer cosas", 1, 
       new Date(), new Date(), "location", 1, [
           new SubTask(1 , "my subtask", new Date(), new Date(), 1, 1),
           new SubTask(2 , "subtask 2", new Date(), new Date(), 1, 1),
           new SubTask(3 , "subtask 3", new Date(), new Date(), 1, 1)
       ], true, true , false , "1 Dec 2018", "10 Dec 2018", "9:00:00");
-      
+      */
 
-      this.habitService.addHabit(newHabit);
+      /*
+      firebase.auth().currentUser.getIdToken().then(
+        (token: string) => {
+          this.habitService.addHabit(token, this.applicationService.currenthabit).subscribe (
+            () => {
+              this.navCtrl.setRoot(TabsPage);
+              this.showToast('top');
+              console.log('Habit Added');
+            },
+            error => {
+                console.log(error.message);
+                this.logger.error(error.message, 'error in onSubmit profile');
+                const alert = this.alertCtrl.create({
+                  title: 'Adding Habit failed!',
+                  message: error.message,
+                  buttons: ['Ok']
+                });
+                alert.present();
+            }
+          );
+        }
+      ); 
+      
+      */
     }
+  }
+
+  showToast(position:string) {
+    let toast = this.toastCtrl.create({
+        message: 'Profile updated successfully',
+        duration: 2000,
+        position: position
+    });
+    toast.present(toast);
   }
 
   reorderItems(indexes){

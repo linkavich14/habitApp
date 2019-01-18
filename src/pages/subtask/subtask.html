@@ -14,11 +14,11 @@
         <ion-input type="text" formControlName="taskName"></ion-input>
     </ion-item>
     <ion-item>
-        <ion-label>Habit Type</ion-label>
-        <ion-select interface="popover">
+        <ion-label>SubTask Type</ion-label>
+        <ion-select interface="popover" [(ngModel)]="subTaskType" [ngModelOptions]="{standalone: true}">
           <ion-option
-              *ngFor="let option of subtaskTypeOptions"
-              [value]="option">{{ option }}</ion-option>
+              *ngFor="let option of subtaskTypeOptions; let i = index"
+              [value]="i">{{ option }}</ion-option>
         </ion-select>
     </ion-item>
     <ion-item>
@@ -33,14 +33,16 @@
         <ion-label>End Date</ion-label>
         <ion-datetime displayFormat="MMM DD YYYY" [(ngModel)]="endDate" [ngModelOptions]="{standalone: true}"></ion-datetime>
       </ion-item>
+      <!--
       <ion-item>
         <ion-label>Start Time</ion-label>
         <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="startTime" [ngModelOptions]="{standalone: true}"></ion-datetime>
-      </ion-item>
+      </ion-item>     
       <ion-item [class.hide]="displayToggleLocation">
           <ion-label>Add Location</ion-label>
           <ion-toggle value="map" checked="false" (ionChange)="onToggleLocation($event)"></ion-toggle>
       </ion-item>
+      -->
       <ion-list no-lines [class.hide]="displayToggleLocationOptions">
         <ion-list-header>
           Location details
@@ -53,7 +55,7 @@
           <ion-datetime displayFormat="h:mm A" pickerFormat="h mm A" [(ngModel)]="travelTime" [ngModelOptions]="{standalone: true}"></ion-datetime>
         </ion-item>
       </ion-list>
-      <!--Money Section-->
+      <!--Money Section------------------------------------------------------------------------------------------------------------->
       <ion-item [class.hide]="displayToggleMoney">
           <ion-label>Money Involved</ion-label>
           <ion-toggle value="money" checked="false" (ionChange)="onToggleMoney($event)"></ion-toggle>
@@ -63,16 +65,20 @@
             My money goals
           </ion-list-header>
           <ion-item>
-              <ion-label>Your goal ?</ion-label>
-              <ion-select interface="popover">
+              <ion-label>Choose goal ?</ion-label>
+              <ion-select interface="popover" (ionChange)='onMoneyOptionChosen($event)' [(ngModel)]="goalMoneyDetails" [ngModelOptions]="{standalone: true}">
                 <ion-option
                 *ngFor="let option of moneyGoalsOptions; let i = index"
                 [value]="i">{{ option }}</ion-option>
               </ion-select>         
           </ion-item>
-          <ion-item [class.hide]="displayMoneyGoalPercentage">
-              <ion-label floating>Percentage</ion-label>
-              <ion-input type="text"></ion-input>
+          <ion-item [class.hide]="displayMoneyGoalOther">
+                <ion-label floating>What is your goal ?</ion-label>
+                <ion-input type="text" [(ngModel)]="otherGoalName" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>{{ moneyFieldLabel }}</ion-label>
+              <ion-input type="text" [(ngModel)]="moneyGoalvalue" [ngModelOptions]="{standalone: true}"></ion-input>
           </ion-item>
           <ion-item [class.hide]="displayBudgetFields">
               <ion-label>Want to create a Budget ?</ion-label>
@@ -81,29 +87,33 @@
               </button>
           </ion-item>          
       </ion-list>
-      <!--Exercise section-->
+      <!--Exercise section------------------------------------------------------------------------------------------------------------->
       <ion-item [class.hide]="displayToggleExercise">
           <ion-label>Exercise Involved</ion-label>
           <ion-toggle value="exercise" checked="false" (ionChange)="onToggleExercise($event)"></ion-toggle>
       </ion-item>
       <ion-list no-lines [class.hide]="displayToggleExerciseOption">
           <ion-list-header>
-            My healthier goals
+            My health goals
           </ion-list-header>
           <ion-item>
-            <ion-label>Your goal ?</ion-label>
-            <ion-select interface="popover">
+            <ion-label>Choose your goal ?</ion-label>
+            <ion-select interface="popover" (ionChange)='onExerciseOptionChosen($event)' [(ngModel)]="goalExerciseDetails" [ngModelOptions]="{standalone: true}">
                 <ion-option
                 *ngFor="let option of healthGoalsOptions; let i = index"
                 [value]="i">{{ option }}</ion-option>              
             </ion-select>         
           </ion-item>
-          <ion-item [class.hide]="displayKmInput">
-              <ion-label floating>How many km</ion-label>
-              <ion-input type="text" ></ion-input>
+          <ion-item [class.hide]="displayExerciseGoalOther">
+            <ion-label floating>What is your goal ?</ion-label>
+            <ion-input type="text" [(ngModel)]="otherExerciseGoalName" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>{{ exerciseFieldLabel }}</ion-label>
+              <ion-input type="text" [(ngModel)]="exerciseGoalValue" [ngModelOptions]="{standalone: true}"></ion-input>
           </ion-item>
       </ion-list>
-      <!--Learning Section-->
+      <!--Learning Section------------------------------------------------------------------------------------------------------------->
       <ion-item [class.hide]="displayToggleLearning">
           <ion-label>Learning Involved</ion-label>
           <ion-toggle value="learning" checked="false" (ionChange)="onToggleLearning($event)"></ion-toggle>
@@ -114,18 +124,22 @@
           </ion-list-header>
           <ion-item>
             <ion-label>Your goal ?</ion-label>
-            <ion-select interface="popover">
+            <ion-select interface="popover" (ionChange)='onLearningOptionChosen($event)' [(ngModel)]="goalLearningDetails" [ngModelOptions]="{standalone: true}">
                 <ion-option
                 *ngFor="let option of educationGoalsOptions; let i = index"
                 [value]="i">{{ option }}</ion-option>
             </ion-select>         
           </ion-item>
           <ion-item [class.hide]="displayEducationGoalField">
-              <ion-label floating>{{ educationFieldLabel }}</ion-label>
-              <ion-input type="text" value=""></ion-input>
+            <ion-label floating>What is your goal ?</ion-label>
+            <ion-input type="text" [(ngModel)]="otherLearningGoalName" [ngModelOptions]="{standalone: true}"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>{{ learningFieldLabel }}</ion-label>
+              <ion-input type="text" [(ngModel)]="learningGoalValue" [ngModelOptions]="{standalone: true}"></ion-input>
           </ion-item>
       </ion-list>
-      <!--Remove a bad habit section-->
+      <!--Remove a bad habit section------------------------------------------------------------------------------------------------------------->
       <ion-item [class.hide]="displayToggleBadHabit">
           <ion-label>Remove a Bad Habit</ion-label>
           <ion-toggle value="badHabit" checked="false" (ionChange)="onToggleBadHabit($event)"></ion-toggle>
@@ -136,16 +150,20 @@
           </ion-list-header>
           <ion-item>
             <ion-label>Your goal ?</ion-label>
-            <ion-select interface="popover">
+            <ion-select interface="popover" (ionChange)='onRemoveBadHabitOptionChose($event)' [(ngModel)]="goalRemoveBadHabitDetails" [ngModelOptions]="{standalone: true}">
                 <ion-option
                 *ngFor="let option of badHabitRemoveOptions; let i = index"
                 [value]="i">{{ option }}</ion-option>
             </ion-select>         
           </ion-item>
           <ion-item [class.hide]="displayBadHabitField">
-              <ion-label floating>Which</ion-label>
-              <ion-input type="text" value=""></ion-input>
+              <ion-label floating>What do you want to change ?</ion-label>
+              <ion-input type="text"  [(ngModel)]="otherBadHabitGoalName" [ngModelOptions]="{standalone: true}"></ion-input>
           </ion-item>
+          <ion-item>
+            <ion-label floating>{{ removeBadHabitFieldLabel }}</ion-label>
+            <ion-input type="text" [(ngModel)]="badHabitGoalValue" [ngModelOptions]="{standalone: true}"></ion-input>
+        </ion-item>
       </ion-list>
     </ion-list>
     <button

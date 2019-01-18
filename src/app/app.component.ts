@@ -15,6 +15,7 @@ import { AuthService } from '../services/auth';
 import firebase from 'firebase';
 import { FIREBASE_CONFIG } from './firebase.credentials';
 import { SigninPage } from '../pages/signin/signin';
+import { ApplicationService } from '../services/application-service';
 
 @Component({
   templateUrl: 'app.html'
@@ -39,7 +40,8 @@ export class MyApp {
               statusBar: StatusBar, 
               splashScreen: SplashScreen,
               private menuCtrl: MenuController,
-              private authService: AuthService) {
+              private authService: AuthService,
+              public applicationService: ApplicationService) {
     
     firebase.initializeApp(FIREBASE_CONFIG);
 
@@ -47,6 +49,7 @@ export class MyApp {
       if (user) {
         this.isAuthenticated = true;
         this.rootPage = TabsPage;
+        this.applicationService.userId = user.uid;
       } else {
         this.isAuthenticated = false;
         this.rootPage = TabsPage;

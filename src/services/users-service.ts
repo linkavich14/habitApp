@@ -4,14 +4,16 @@ import { User } from "../models/user";
 import firebase from "firebase";
 import 'rxjs/Rx';
 import { map } from "rxjs/operators";
+import { ApplicationService } from "./application-service";
 
 @Injectable()
 export class UsersService {
-    userId = firebase.auth().currentUser.uid;
-    constructor(public http: HttpClient) {}
+    
+    constructor(public http: HttpClient, 
+                public applicationService: ApplicationService) {}
 
     manageUser(user:User, token: string) { 
-        return this.http.put('https://habitgoalapp.firebaseio.com/' + this.userId + '/users.json?auth=' + token , user);       
+        return this.http.put('https://habitgoalapp.firebaseio.com/' + this.applicationService.userId + '/user.json?auth=' + token , user);       
     }
 
     updateUser(user:User) {
@@ -23,7 +25,7 @@ export class UsersService {
     }
 
     getUser(token: string) {
-        return this.http.get('https://habitgoalapp.firebaseio.com/' + this.userId + '/users.json?auth=' + token)
+        return this.http.get('https://habitgoalapp.firebaseio.com/' + this.applicationService.userId + '/user.json?auth=' + token)
         .pipe(
             map(data => {
                 return JSON.stringify(data);
