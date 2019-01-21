@@ -24,6 +24,13 @@ export class HabitPage implements OnInit{
   displaySubTasksOptions: boolean = true; 
   displayDates: boolean = false;
   displayHabits: boolean = true;
+  displayCategories: boolean = true;
+  displaySubCategories: boolean = true;
+  displayHabitName: boolean = true;
+  displayDescription: boolean = true;
+  displayMoreDetails: boolean = true;
+  displayShowTasks: boolean = true;
+  displayHabitButton: boolean = true;
 
   moreOptionsInitial: boolean = false;
   showSubTasksInitial: boolean = false;
@@ -39,12 +46,16 @@ export class HabitPage implements OnInit{
   habitForm: FormGroup;
 
   habitType : number = 0;
+  habitCategory: number = 0;
+  habitSubCategory: number = 0;
   startDate: string = new Date().toISOString();
   endDate: string = new Date().toISOString();
   startTime: string = new Date().toISOString();
   travelTime: string = new Date().toISOString();
 
-  habitTypeOptions = ['Habit', 'Appointment', 'Goal', 'Reminder'];
+  habitTypeOptions = ['Select type','Habit', 'Appointment', 'Goal', 'Reminder'];
+  habitCategoriesOptions = ['Select category','Arts', 'Fitness', 'Financial', 'Self Improvement', 'Social', 'Other'];
+  habitSubCategoriesOpt = ['Select subcategory','Budget', 'Save', 'Earn'];
   prepopulatedOptions = [];
   prepolutatedHabitsLabel: string = "Select a habit or create a new one";
 
@@ -284,4 +295,35 @@ export class HabitPage implements OnInit{
     this.subTasksArray = reorderArray(this.subTasksArray, indexes);
   }
 
+  onHabitTypeChange(option: any) {
+    if(option != 0){
+      this.displayCategories = false;
+    } else {
+      this.displayCategories = true;
+    }
+  }
+
+  onCategoryChange(option: any) {
+    if(option != 0){
+      this.displaySubCategories = false;
+    } else {
+      this.displaySubCategories = true;
+    }
+  }
+
+  onSubCategoryChange(option: any) {
+    if(option != 0){
+      this.displayHabitName = false;
+      this.displayDescription = false;
+      this.displayMoreDetails = false;
+      this.displayShowTasks = false;
+      this.displayHabitButton = false;
+    } else {
+      this.displayHabitName = true;
+      this.displayDescription = true;
+      this.displayMoreDetails = true;
+      this.displayShowTasks = true;
+      this.displayHabitButton = true;
+    }
+  }  
 }

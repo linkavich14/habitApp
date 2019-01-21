@@ -12,20 +12,36 @@
         My Habit details
       </ion-list-header>
       <ion-item>
+        <ion-label>Activity Type</ion-label>
+        <ion-select interface="popover" [(ngModel)]="habitType" (ionChange)='onHabitTypeChange($event)' [ngModelOptions]="{standalone: true}">
+            <ion-option
+            *ngFor="let option of habitTypeOptions; let i = index"
+            [value]="i">{{ option }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item [class.hide]="displayCategories">
+        <ion-label>Select Category</ion-label>
+        <ion-select interface="popover" [(ngModel)]="habitCategory" (ionChange)='onCategoryChange($event)' [ngModelOptions]="{standalone: true}">
+          <ion-option
+          *ngFor="let option of habitCategoriesOptions; let i = index"
+          [value]="i">{{ option }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item [class.hide]="displaySubCategories">
+        <ion-label>Select Subcategory</ion-label>
+        <ion-select interface="popover" [(ngModel)]="habitSubCategory" (ionChange)='onSubCategoryChange($event)' [ngModelOptions]="{standalone: true}">
+          <ion-option
+          *ngFor="let option of habitSubCategoriesOpt; let i = index"
+          [value]="i">{{ option }}</ion-option>
+        </ion-select>
+      </ion-item>
+      <ion-item [class.hide]="displayHabitName">
         <ion-label floating>Habit Name</ion-label>
         <ion-input type="text" formControlName="habitName"></ion-input>
       </ion-item>
-      <ion-item>
+      <ion-item [class.hide]="displayDescription">
         <ion-label floating>Description</ion-label>
         <ion-input type="text" formControlName="description"></ion-input>
-      </ion-item>
-      <ion-item>
-          <ion-label>Activity Type</ion-label>
-          <ion-select interface="popover" [(ngModel)]="habitType" [ngModelOptions]="{standalone: true}">
-              <ion-option
-              *ngFor="let option of habitTypeOptions; let i = index"
-              [value]="i">{{ option }}</ion-option>
-          </ion-select>
       </ion-item>
       <ion-item [class.hide]="displayHabits">
         <ion-label>{{ prepolutatedHabitsLabel }}</ion-label>
@@ -35,11 +51,11 @@
           [value]="i">{{ option }}</ion-option>
       </ion-select>
       </ion-item>
-      <ion-item>
+      <ion-item [class.hide]="displayMoreDetails">
           <ion-label>Add more details</ion-label>
           <ion-toggle value="moreDetails" [checked]="moreOptionsInitial" (ionChange)="onToggleMoreDetails($event)"></ion-toggle>
       </ion-item>
-      <ion-item>
+      <ion-item [class.hide]="displayShowTasks">
         <ion-label>Show tasks</ion-label>
         <ion-toggle value="showSubtasks" [checked]="showSubTasksInitial" (ionChange)="onToggleShowSubtasks($event)"></ion-toggle>
     </ion-item>
@@ -100,9 +116,10 @@
       </ion-item-group> 
     </ion-list>
     <button
-    type="submit"
-    ion-button
-    block
-    [disabled]="!habitForm.valid">{{ mode }} Habit</button>
+      [class.hide] = "displayHabitButton"
+      type="submit"
+      ion-button
+      block
+      [disabled]="!habitForm.valid">{{ mode }} Habit</button>
   </form>
 </ion-content>
